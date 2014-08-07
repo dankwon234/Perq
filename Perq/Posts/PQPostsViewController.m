@@ -291,6 +291,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
         if (self.session.latitude!=0.0 && self.session.longitude!=0.0){
             [self.loadingIndicator startLoading];
             [self slidePostsView:self.view.frame.size.height completion:@selector(fetchNearbyPosts)];
+            [self showMenuButtons];
             return;
         }
         
