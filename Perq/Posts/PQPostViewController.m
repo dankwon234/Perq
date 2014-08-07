@@ -502,12 +502,21 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat defaultHeight = 0.6f*kPostCellDimension;
     
-    if (indexPath.row >= self.post.comments.count){
-        return CGSizeMake(self.view.frame.size.width-30-24.0f, 0.6f*kPostCellDimension);
-    }
+    if (indexPath.row >= self.post.comments.count)
+        return CGSizeMake([PQCommentViewCell textLabelWidth], defaultHeight);
+    
+    
+    PQComment *comment = (PQComment *)self.post.comments[indexPath.row];
+    CGRect boudingRect = [comment.text boundingRectWithSize:CGSizeMake([PQCommentViewCell textLabelWidth], 250.0f)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName:[PQCommentViewCell textLabelFont]}
+                                                    context:NULL];
 
-    return CGSizeMake(self.view.frame.size.width-30-24.0f, 0.6f*kPostCellDimension);
+    CGFloat h = (boudingRect.size.height+40.0f < defaultHeight) ? defaultHeight : boudingRect.size.height+60.0f;
+    
+    return CGSizeMake(self.view.frame.size.width-30-24.0f, h);
 
 }
 
