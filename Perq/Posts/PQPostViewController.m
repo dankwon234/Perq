@@ -28,7 +28,7 @@
 @end
 
 static NSString *cellIdentifier = @"commentCellIdentifier";
-#define kTopInset 160.0f
+#define kTopInset 200.0f
 #define kCommentViewHeight 44.0f
 
 @implementation PQPostViewController
@@ -49,6 +49,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 - (void)dealloc
 {
     [self.commentsCollectionView removeObserver:self forKeyPath:@"contentOffset"];
+//    [self.lblCaption removeObserver:self forKeyPath:@"text"];
 }
 
 - (void)loadView
@@ -101,25 +102,36 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 
     CGFloat x = self.border.frame.origin.x+dimen+16.0f;
     y = 0;
+    CGFloat width = frame.size.width-x;
+    
+    self.lblLocation = [[UILabel alloc] initWithFrame:CGRectMake(x, y, width, 22.0f)];
+    self.lblLocation.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.lblLocation.backgroundColor = [UIColor clearColor];
+    self.lblLocation.textColor = [UIColor lightGrayColor];
+    self.lblLocation.text = [NSString stringWithFormat:@"%@, %@", self.post.city, [self.post.state uppercaseString]];
+    self.lblLocation.alpha = 0.0f;
+    self.lblLocation.font = [UIFont systemFontOfSize:14.0f];
+    [view addSubview:self.lblLocation];
+    y += self.lblLocation.frame.size.height;
+
+    
     UIFont *verdana = [UIFont fontWithName:@"Verdana" size:16.0f];
-    self.lblCaption = [[UILabel alloc] initWithFrame:CGRectMake(x, y, frame.size.width-x, 24.0f)];
+    CGRect boudingRect = [self.post.caption boundingRectWithSize:CGSizeMake(width, 250.0f)
+                                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                                      attributes:@{NSFontAttributeName:verdana}
+                                                         context:NULL];
+
+    
+    self.lblCaption = [[UILabel alloc] initWithFrame:CGRectMake(x, y, width, boudingRect.size.height+4.0f)];
     self.lblCaption.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.lblCaption.numberOfLines = 0;
+    self.lblCaption.lineBreakMode = NSLineBreakByWordWrapping;
     self.lblCaption.backgroundColor = [UIColor clearColor];
     self.lblCaption.textColor = [UIColor whiteColor];
     self.lblCaption.text = self.post.caption;
     self.lblCaption.alpha = 0.0f;
     self.lblCaption.font = verdana;
     [view addSubview:self.lblCaption];
-    y += self.lblCaption.frame.size.height;
-    
-    self.lblLocation = [[UILabel alloc] initWithFrame:CGRectMake(x, y, frame.size.width-x, 24.0f)];
-    self.lblLocation.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    self.lblLocation.backgroundColor = [UIColor clearColor];
-    self.lblLocation.textColor = [UIColor whiteColor];
-    self.lblLocation.text = [NSString stringWithFormat:@"%@, %@", self.post.city, [self.post.state uppercaseString]];
-    self.lblLocation.alpha = 0.0f;
-    self.lblLocation.font = verdana;
-    [view addSubview:self.lblLocation];
     
     UIImage *backArrow = [UIImage imageNamed:@"backarrow.png"];
     self.btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -128,7 +140,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self.btnBack.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.btnBack.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.btnBack.frame = CGRectMake(12.0f, 10.0f, backArrow.size.width, backArrow.size.height);
-    self.btnBack.center = CGPointMake(self.btnBack.center.x, 0.5f*frame.size.height);
+    self.btnBack.center = CGPointMake(self.btnBack.center.x, 0.4f*frame.size.height);
     self.btnBack.alpha = 0.0f;
     [view addSubview:self.btnBack];
 
@@ -233,7 +245,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    
     if ([keyPath isEqualToString:@"contentOffset"]){
         CGFloat verticalOffset = self.commentsCollectionView.contentOffset.y;
         if (verticalOffset < -kTopInset){
