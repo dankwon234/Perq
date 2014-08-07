@@ -493,9 +493,8 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     
     cell.contentView.alpha = 1.0f;
     PQComment *comment = (PQComment *)self.post.comments[indexPath.row];
-//    cell.lblText.text = comment.text;
-    cell.lblText.text = [NSString stringWithFormat:@"%@\n%@", comment.text, comment.formattedDate];
-
+    cell.lblText.text = comment.text;
+    cell.lblDate.text = comment.formattedDate;
     
     return cell;
 }

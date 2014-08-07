@@ -11,6 +11,9 @@
 
 @implementation PQCommentViewCell
 @synthesize lblText;
+@synthesize lblDate;
+
+#define kTextLabelFont [UIFont systemFontOfSize:14.0f]
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -34,16 +37,37 @@
         background.layer.masksToBounds = YES;
         [self.contentView addSubview:background];
         
-        self.lblText = [[UILabel alloc] initWithFrame:CGRectMake(x+10.0f, 10.0f, background.frame.size.width-20, background.frame.size.height-20)];
+        CGFloat y = 5.0f;
+        self.lblText = [[UILabel alloc] initWithFrame:CGRectMake(x+10.0f, y, background.frame.size.width-20, background.frame.size.height-20)];
         self.lblText.textColor = [UIColor whiteColor];
-        self.lblText.font = [UIFont systemFontOfSize:14.0f];
+        self.lblText.font = kTextLabelFont;
         self.lblText.numberOfLines = 0;
         self.lblText.lineBreakMode = NSLineBreakByWordWrapping;
         [self.contentView addSubview:self.lblText];
+        y += self.lblText.frame.size.height;
+        
+        self.lblDate = [[UILabel alloc] initWithFrame:CGRectMake(x+10.0f, y, background.frame.size.width-20, 13.0f)];
+        self.lblDate.backgroundColor = [UIColor clearColor];
+        self.lblDate.textAlignment = NSTextAlignmentRight;
+        self.lblDate.textColor = [UIColor lightGrayColor];
+        self.lblDate.font = [UIFont systemFontOfSize:11.0f];
+        [self.contentView addSubview:self.lblDate];
         
     }
     return self;
 }
+
++ (CGFloat)textLabelWidth
+{
+    CGFloat width = [UIScreen mainScreen].applicationFrame.size.width-30.0f-24.0f-70.0f;
+    return width;
+}
+
++ (UIFont *)textLabelFont
+{
+    return kTextLabelFont;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -11,4 +11,7 @@
 @interface PQCommentViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) UILabel *lblText;
+@property (strong, nonatomic) UILabel *lblDate;
++ (CGFloat)textLabelWidth;
++ (UIFont *)textLabelFont;
 @end
