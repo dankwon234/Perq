@@ -170,7 +170,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     btnSend.backgroundColor = [UIColor clearColor];
     [btnSend addTarget:self action:@selector(submitComment) forControlEvents:UIControlEventTouchUpInside];
     [self.commentsFieldView addSubview:btnSend];
-    
     [view addSubview:self.commentsFieldView];
     
 
@@ -179,16 +178,19 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self.fullImageView.backgroundColor = [UIColor blackColor];
     self.fullImageView.alpha = 0.0f;
     
-    UIButton *btnExitFullImage = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnExitFullImage.frame = CGRectMake(20.0f, 20.0f, 36.0f, 36.0f);
-    [btnExitFullImage setTitle:@"X" forState:UIControlStateNormal];
-    [btnExitFullImage setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btnExitFullImage addTarget:self action:@selector(exitFullImage:) forControlEvents:UIControlEventTouchUpInside];
-    [self.fullImageView addSubview:btnExitFullImage];
-    
     self.fullImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.width)];
     self.fullImage.center = self.fullImageView.center;
     [self.fullImageView addSubview:self.fullImage];
+    
+    width = 0.5f*view.frame.size.width;
+    UIButton *btnExitFullImage = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnExitFullImage.frame = CGRectMake(0.5*(view.frame.size.width-width), view.frame.size.height-50.0f, width, 36.0f);
+    btnExitFullImage.titleLabel.font = verdana;
+    [btnExitFullImage setTitle:@"Close" forState:UIControlStateNormal];
+    [btnExitFullImage setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnExitFullImage addTarget:self action:@selector(exitFullImage:) forControlEvents:UIControlEventTouchUpInside];
+    [self.fullImageView addSubview:btnExitFullImage];
+
     
     [view addSubview:self.fullImageView];
 
