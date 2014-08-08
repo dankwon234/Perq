@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PQDateFormatter.h"
 
 @interface PQComment : NSObject
 
@@ -18,6 +19,7 @@
 @property (copy, nonatomic) NSString *text;
 @property (copy, nonatomic) NSString *handle; //optional
 @property (copy, nonatomic) NSString *formattedDate;
+@property (strong, nonatomic) PQDateFormatter *dateFormatter;
 + (PQComment *)commentWithInfo:(NSDictionary *)info;
 - (NSDictionary *)parametersDictionary;
 - (NSString *)jsonRepresentation;

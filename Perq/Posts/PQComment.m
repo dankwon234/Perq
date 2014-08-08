@@ -16,6 +16,7 @@
 @synthesize handle;
 @synthesize deviceHash;
 @synthesize formattedDate;
+@synthesize dateFormatter;
 
 
 #define kOneDay 24*60*60 // one day in seconds
@@ -24,6 +25,7 @@
 {
     self = [super init];
     if (self){
+        self.dateFormatter = [PQDateFormatter sharedDateFormatter];
         self.post = @"none";
         self.handle = @"none";
         self.text = @"none";
@@ -61,11 +63,8 @@
 
         
         if ([key isEqualToString:@"timestamp"]){
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"EEE MMM dd HH:mm:ss z yyyy"]; //Tue Jun 17 00:52:49 UTC 2014
-            
             NSString *ts = info[@"timestamp"];
-            self.timestamp = [dateFormat dateFromString:ts];
+            self.timestamp = [self.dateFormatter dateFromString:ts];
             
             NSTimeInterval sinceNow = -1*[self.timestamp timeIntervalSinceNow];
             if (sinceNow < kOneDay){
