@@ -136,12 +136,22 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     [view addSubview:self.lblCaption];
     y += self.lblCaption.frame.size.height+20.0f;
     
-    UIImage *imgHeart = ([self.post.likes containsObject:self.session.deviceHash]) ? [UIImage imageNamed:@"iconHeartRed.png"] : [UIImage imageNamed:@"iconHeart.png"];
+    UIImage *imgHeart = nil;
+    UIColor *btnColor = nil;
+    if ([self.post.likes containsObject:self.session.deviceHash]){
+        imgHeart = [UIImage imageNamed:@"iconHeartRed.png"];
+        btnColor = [UIColor whiteColor];
+    }
+    else{
+        imgHeart = [UIImage imageNamed:@"iconHeart.png"];
+        btnColor = [UIColor darkGrayColor];
+    }
+    
     self.btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
     self.btnLike.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.btnLike.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
     [self.btnLike setBackgroundImage:imgHeart forState:UIControlStateNormal];
-    [self.btnLike setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self.btnLike setTitleColor:btnColor forState:UIControlStateNormal];
     [self.btnLike setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
     self.btnLike.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     [self.btnLike addTarget:self action:@selector(likePost:) forControlEvents:UIControlEventTouchUpInside];
@@ -471,10 +481,17 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
                         [btn setTitleColor:btnColor forState:UIControlStateNormal];
                         [btn setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
                     }
-                    completion:^(BOOL finished){
-                        
-                        // send api call
-                        
+                    completion:^(BOOL finished){ // send api call
+                        if ([self.post.likes containsObject:self.session.deviceHash]){ // remove like
+                            [[PQWebServices sharedInstance] likePost:self.post withDevice:self.session.deviceHash completion:^(id result, NSError *error){
+                                
+                            }];
+                        }
+                        else{
+                            [[PQWebServices sharedInstance] unlikePost:self.post withDevice:self.session.deviceHash completion:^(id result, NSError *error){
+                                
+                            }];
+                        }
                         
                     }];
 }
