@@ -515,9 +515,10 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat defaultHeight = 0.6f*kPostCellDimension;
+    CGFloat defaultWidth = self.view.frame.size.width-30-24.0f;
     
     if (indexPath.row >= self.post.comments.count)
-        return CGSizeMake([PQCommentViewCell textLabelWidth], defaultHeight);
+        return CGSizeMake(defaultWidth, defaultHeight);
     
     
     PQComment *comment = (PQComment *)self.post.comments[indexPath.row];
@@ -528,7 +529,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 
     CGFloat h = (boudingRect.size.height+40.0f < defaultHeight) ? defaultHeight : boudingRect.size.height+60.0f;
     
-    return CGSizeMake(self.view.frame.size.width-30-24.0f, h);
+    return CGSizeMake(defaultWidth, h);
 
 }
 
