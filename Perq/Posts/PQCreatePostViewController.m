@@ -24,6 +24,24 @@ static NSString *placeholder = @"Enter a short caption here.";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        CGFloat width = 200.0f;
+        CGFloat height = 46.0f;
+        UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
+        titleView.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight);
+        titleView.backgroundColor = [UIColor clearColor];
+        UIImage *imgLogo = [UIImage imageNamed:@"logo.png"];
+        UIImageView *logo = [[UIImageView alloc] initWithImage:imgLogo];
+        static double scale = 0.7f;
+        CGRect frame = logo.frame;
+        frame.size.width = scale*imgLogo.size.width;
+        frame.size.height = scale*imgLogo.size.height;
+        logo.frame = frame;
+        logo.center = CGPointMake(0.45f*width, 24.0f);
+        
+        [titleView addSubview:logo];
+        
+        self.navigationItem.titleView = titleView;
+
         self.post = [[PQPost alloc] init];
         self.post.deviceHash = self.session.deviceHash;
         self.post.city = self.session.city;
@@ -85,18 +103,18 @@ static NSString *placeholder = @"Enter a short caption here.";
     
     y += self.lblLocation.frame.size.height;
     UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0.0f, y, frame.size.width, frame.size.height)];
-    bottom.backgroundColor = kRed;
+    bottom.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgBlurry.png"]];
     
     UIButton *btnUpload = [UIButton buttonWithType:UIButtonTypeCustom];
     btnUpload.frame = CGRectMake(padding, padding, frame.size.width-2*padding, 44.0f);
-    btnUpload.backgroundColor = kGreen;
+    [btnUpload setBackgroundImage:[UIImage imageNamed:@"bgButton.png"] forState:UIControlStateNormal];
     btnUpload.layer.cornerRadius = 4.0f;
     btnUpload.layer.masksToBounds = YES;
     btnUpload.titleLabel.font = [UIFont fontWithName:@"Verdana" size:16.0f];
     [btnUpload setTitle:@"Upload Photo" forState:UIControlStateNormal];
     [btnUpload addTarget:self action:@selector(submitPost:) forControlEvents:UIControlEventTouchUpInside];
     [bottom addSubview:btnUpload];
-    
+
     
     [view addSubview:bottom];
     
