@@ -9,6 +9,7 @@
 #import "PQDateFormatter.h"
 
 @implementation PQDateFormatter
+@synthesize monthsArray;
 
 - (id)init
 {
@@ -16,6 +17,7 @@
     if (self){
         
         [self setDateFormat:@"EEE MMM dd HH:mm:ss z yyyy"]; //Tue Jun 17 00:52:49 UTC 2014
+        self.monthsArray = @[@"Jan", @"Feb", @"Mar", @"Apr", @"May", @"June", @"July", @"Aug", @"Sep", @"Oct", @"Nov", @"Dec"];
 
     }
     

@@ -10,5 +10,6 @@
 
 @interface PQDateFormatter : NSDateFormatter
 
+@property (strong, nonatomic) NSArray *monthsArray;
 + (PQDateFormatter *)sharedDateFormatter;
 @end
