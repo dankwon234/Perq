@@ -17,11 +17,11 @@
 @property (copy, nonatomic) NSString *zip;
 @property (copy, nonatomic) NSString *image;
 @property (copy, nonatomic) NSString *deviceHash;
+@property (strong, nonatomic) NSMutableArray *likes;
 @property (strong, nonatomic) UIImage *imageData;
 @property (strong, nonatomic) NSMutableArray *comments;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
-@property (nonatomic) int likes;
 @property (nonatomic) int commentCount;
 + (PQPost *)postWithInfo:(NSDictionary *)info;
 - (NSDictionary *)parametersDictionary;

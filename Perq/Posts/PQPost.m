@@ -34,6 +34,7 @@
     self = [super init];
     if (self){
         self.comments = [NSMutableArray array];
+        self.likes = [NSMutableArray array];
         self.imageData = nil;
         self.deviceHash = @"none";
         self.uniqueId = @"none";
@@ -44,7 +45,6 @@
         self.zip = @"none";
         self.latitude = 0.0f;
         self.longitude = 0.0f;
-        self.likes = 0;
         self.imageData = nil;
         self.isFetchingImage = NO;
     }
@@ -90,7 +90,7 @@
             self.longitude = [[info objectForKey:key] doubleValue];
         
         if ([key isEqualToString:@"likes"])
-            self.likes = [[info objectForKey:key] intValue];
+            self.likes = [NSMutableArray arrayWithArray:[info objectForKey:key]];
 
         if ([key isEqualToString:@"commentCount"])
             self.commentCount = [[info objectForKey:key] intValue];
@@ -140,7 +140,7 @@
 
 - (NSDictionary *)parametersDictionary
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"deviceHash":self.deviceHash, @"caption":self.caption, @"image":self.image, @"city":self.city, @"state":self.state, @"zip":self.zip, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude], @"likes":[NSString stringWithFormat:@"%d", self.likes]}];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"deviceHash":self.deviceHash, @"caption":self.caption, @"image":self.image, @"city":self.city, @"state":self.state, @"zip":self.zip, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude]}];
     
     return params;
 

@@ -585,7 +585,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     cell.tag = indexPath.row+1000;
     
     [cell.btnComment setTitle:[NSString stringWithFormat:@"%d", post.commentCount] forState:UIControlStateNormal];
-    [cell.btnHeart setTitle:[NSString stringWithFormat:@"%d", post.likes] forState:UIControlStateNormal];
+    [cell.btnHeart setTitle:[NSString stringWithFormat:@"%d", post.likes.count] forState:UIControlStateNormal];
     
     if (post.imageData){
         cell.image.image = post.imageData;
