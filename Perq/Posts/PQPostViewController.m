@@ -173,8 +173,12 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self.lblDate.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.lblDate.backgroundColor = [UIColor whiteColor];
     self.lblDate.layer.cornerRadius = 4.0f;
-    self.lblDate.text = @"Aug 7";
+    self.lblDate.text = self.post.formattedDate;
     self.lblDate.font = [UIFont systemFontOfSize:12.0f];
+    if (self.post.formattedDate==nil)
+        [self.post formatTimestamp];
+    
+    self.lblDate.text = self.post.formattedDate;
     [view addSubview:self.lblDate];
 
     
@@ -295,7 +299,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     if ([keyPath isEqualToString:@"contentOffset"]){
         CGFloat verticalOffset = self.commentsCollectionView.contentOffset.y;
         if (verticalOffset < -kTopInset){
-            NSLog(@"%.2f", verticalOffset);
+//            NSLog(@"%.2f", verticalOffset);
             
             verticalOffset *= -1;
             double diff = verticalOffset-kTopInset;
