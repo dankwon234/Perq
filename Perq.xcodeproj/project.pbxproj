@@ -38,6 +38,7 @@
 		5CA98EE61992D1020001D773 /* PQSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA98EE51992D1020001D773 /* PQSession.m */; };
 		5CC5653D198DC6E60015A17D /* iconHeart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CC5653C198DC6E60015A17D /* iconHeart@2x.png */; };
 		5CC5653F198DCC560015A17D /* iconComment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CC5653E198DCC560015A17D /* iconComment@2x.png */; };
+		5CE2CAA419956DB8009B3EAD /* bgButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2CAA319956DB8009B3EAD /* bgButton@2x.png */; };
 		5CE31E4B198C6B7600384BF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE31E4A198C6B7600384BF8 /* Foundation.framework */; };
 		5CE31E4D198C6B7700384BF8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE31E4C198C6B7700384BF8 /* CoreGraphics.framework */; };
 		5CE31E4F198C6B7700384BF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE31E4E198C6B7700384BF8 /* UIKit.framework */; };
@@ -122,6 +123,7 @@
 		5CA98EE51992D1020001D773 /* PQSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQSession.m; sourceTree = "<group>"; };
 		5CC5653C198DC6E60015A17D /* iconHeart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconHeart@2x.png"; sourceTree = "<group>"; };
 		5CC5653E198DCC560015A17D /* iconComment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconComment@2x.png"; sourceTree = "<group>"; };
+		5CE2CAA319956DB8009B3EAD /* bgButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgButton@2x.png"; sourceTree = "<group>"; };
 		5CE31E47198C6B7600384BF8 /* Perq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE31E4A198C6B7600384BF8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5CE31E4C198C6B7700384BF8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -206,6 +208,7 @@
 				5C3C890B19933B9A007BA434 /* placeholder@2x.png */,
 				5CA98EE21992D0030001D773 /* bgCircles@2x.png */,
 				5CA98EE01992CC8E0001D773 /* backarrow@2x.png */,
+				5CE2CAA319956DB8009B3EAD /* bgButton@2x.png */,
 				5C7658221991719100F07C55 /* bgMenuButton@2x.png */,
 				5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */,
 				5CC5653E198DCC560015A17D /* iconComment@2x.png */,
@@ -453,6 +456,7 @@
 				5C3C890A19933AEA007BA434 /* icon_spotlight@2x.png in Resources */,
 				5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */,
 				5CE58784198F493D00C4241F /* btnCamera@2x.png in Resources */,
+				5CE2CAA419956DB8009B3EAD /* bgButton@2x.png in Resources */,
 				5CC5653F198DCC560015A17D /* iconComment@2x.png in Resources */,
 				5CC5653D198DC6E60015A17D /* iconHeart@2x.png in Resources */,
 				5CE31E55198C6B7700384BF8 /* InfoPlist.strings in Resources */,
