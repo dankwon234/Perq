@@ -60,6 +60,7 @@
 		5CE58784198F493D00C4241F /* btnCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE58783198F493D00C4241F /* btnCamera@2x.png */; };
 		5CE83E9419952BFA002E17F2 /* iconHeartRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */; };
 		5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE90CB4198DA1DC00D8848A /* PQPost.m */; };
+		5CEC25ED19953E520050662D /* PQDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC25EC19953E520050662D /* PQDateFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,8 @@
 		5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconHeartRed@2x.png"; sourceTree = "<group>"; };
 		5CE90CB3198DA1DC00D8848A /* PQPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQPost.h; sourceTree = "<group>"; };
 		5CE90CB4198DA1DC00D8848A /* PQPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQPost.m; sourceTree = "<group>"; };
+		5CEC25EB19953E520050662D /* PQDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQDateFormatter.h; sourceTree = "<group>"; };
+		5CEC25EC19953E520050662D /* PQDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQDateFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +340,8 @@
 				5CE31E7C198C6B9B00384BF8 /* PQLoadingIndicator.m */,
 				5CE31E7F198C6B9B00384BF8 /* PQWebServices.h */,
 				5CE31E80198C6B9B00384BF8 /* PQWebServices.m */,
+				5CEC25EB19953E520050662D /* PQDateFormatter.h */,
+				5CEC25EC19953E520050662D /* PQDateFormatter.m */,
 				5C0590C9198C753100002108 /* PQCollectionViewFlowLayout.h */,
 				5C0590CA198C753100002108 /* PQCollectionViewFlowLayout.m */,
 				5C0590CC198C7A2100002108 /* PQCollectionViewCell.h */,
@@ -494,6 +499,7 @@
 				5CA98EDC1992A8B80001D773 /* PQComment.m in Sources */,
 				5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */,
 				5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */,
+				5CEC25ED19953E520050662D /* PQDateFormatter.m in Sources */,
 				5CE31E82198C6B9B00384BF8 /* PQViewController.m in Sources */,
 				5C0C3DA7199188FB00EB060C /* PQCommentViewCell.m in Sources */,
 				5CE58776198F2A8200C4241F /* UIImage+PQImageEffects.m in Sources */,
