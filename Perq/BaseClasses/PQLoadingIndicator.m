@@ -85,6 +85,8 @@
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
                          self.alpha = 0.0f;
+                         self.lblTitle.text = @"";
+                         self.lblMessage.text = @"";
                      }
                      completion:NULL];
 }
