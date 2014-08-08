@@ -792,30 +792,29 @@ static NSString *cellIdentifier = @"cellIdentifier";
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) { //Getting Human readable Address from Lat long...
         
-        [self.loadingIndicator stopLoading];
         if (placemarks.count > 0){
             CLPlacemark *placeMark = placemarks[0];
             NSDictionary *locationInfo = placeMark.addressDictionary;
             NSLog(@"LOCATION: %@", [locationInfo description]);
             
             
+            self.session.city = locationInfo[@"City"];
+            self.session.state = locationInfo[@"State"];
+            self.session.zip = locationInfo[@"ZIP"];
+
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.session.city = locationInfo[@"City"];
-                self.session.state = locationInfo[@"State"];
-                self.session.zip = locationInfo[@"ZIP"];
+                NSString *cityState = [NSString stringWithFormat:@"%@, %@", self.session.city, self.session.state];
+                UIButton *btnLocation = (UIButton *)self.menuButtons[1];
+                [btnLocation setTitle:cityState forState:UIControlStateNormal];
                 
                 if (self.showNearbyPosts){
-                    NSString *cityState = [NSString stringWithFormat:@"%@, %@", self.session.city, self.session.state];
-                    UIButton *btnLocation = (UIButton *)self.menuButtons[1];
-                    [btnLocation setTitle:cityState forState:UIControlStateNormal];
                     [self fetchNearbyPosts];
+
                 }
                 else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self showImageSourceOptions];
-                    });
-
+                    [self.loadingIndicator stopLoading];
+                    [self showImageSourceOptions];
                 }
                 
 
