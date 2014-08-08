@@ -15,8 +15,6 @@
 {
     CGRect bounds = self.bounds;
     
-//    ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) ? UIGraphicsBeginImageContextWithOptions(bounds.size, NO, [UIScreen mainScreen].scale) : UIGraphicsBeginImageContext(bounds.size);
-    
     UIGraphicsBeginImageContextWithOptions(bounds.size, NO, 0.0f);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
