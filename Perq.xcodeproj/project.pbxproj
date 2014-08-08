@@ -58,6 +58,7 @@
 		5CE5877D198F409C00C4241F /* PQPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877C198F409C00C4241F /* PQPostViewController.m */; };
 		5CE58780198F427D00C4241F /* UIView+PQViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */; };
 		5CE58784198F493D00C4241F /* btnCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE58783198F493D00C4241F /* btnCamera@2x.png */; };
+		5CE83E9419952BFA002E17F2 /* iconHeartRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */; };
 		5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE90CB4198DA1DC00D8848A /* PQPost.m */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +153,7 @@
 		5CE5877E198F427C00C4241F /* UIView+PQViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PQViewAdditions.h"; sourceTree = "<group>"; };
 		5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PQViewAdditions.m"; sourceTree = "<group>"; };
 		5CE58783198F493D00C4241F /* btnCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnCamera@2x.png"; sourceTree = "<group>"; };
+		5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconHeartRed@2x.png"; sourceTree = "<group>"; };
 		5CE90CB3198DA1DC00D8848A /* PQPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQPost.h; sourceTree = "<group>"; };
 		5CE90CB4198DA1DC00D8848A /* PQPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQPost.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +208,7 @@
 				5CC5653E198DCC560015A17D /* iconComment@2x.png */,
 				5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */,
 				5CC5653C198DC6E60015A17D /* iconHeart@2x.png */,
+				5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */,
 				5CE58783198F493D00C4241F /* btnCamera@2x.png */,
 			);
 			path = Images;
@@ -457,6 +460,7 @@
 				5C3C890919933AEA007BA434 /* icon_settings@2x.png in Resources */,
 				5C4AEF0119944C43007825C1 /* Default-568h@2x.png in Resources */,
 				5C783747198DEA2400A17BB1 /* bgBlurry@2x.png in Resources */,
+				5CE83E9419952BFA002E17F2 /* iconHeartRed@2x.png in Resources */,
 				5C3C890619933A93007BA434 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
