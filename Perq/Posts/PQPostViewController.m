@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UIView *commentsFieldView;
 @property (strong, nonatomic) UITextView *commentsField;
 @property (strong, nonatomic) UIButton *btnLike;
+@property (strong, nonatomic) UIButton *btnShare;
 @property (nonatomic) BOOL textFieldCanDismiss;
 @end
 
@@ -141,14 +142,14 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self.btnLike.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
     [self.btnLike setBackgroundImage:imgHeart forState:UIControlStateNormal];
     [view addSubview:self.btnLike];
-    x += self.btnLike.frame.size.width+20.0f;
+    x += self.btnLike.frame.size.width;
     
-    UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnShare.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnShare.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
-    [btnShare setTitle:@"Share" forState:UIControlStateNormal];
-    [btnShare setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [view addSubview:btnShare];
+    UIImage *imgShare = [UIImage imageNamed:@"iconShare.png"];
+    self.btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btnShare.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    [self.btnShare setBackgroundImage:imgShare forState:UIControlStateNormal];
+    self.btnShare.frame = CGRectMake(x, y, imgShare.size.width, imgShare.size.height);
+    [view addSubview:self.btnShare];
 
     
     UIImage *backArrow = [UIImage imageNamed:@"backarrow.png"];
@@ -280,6 +281,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             self.lblCaption.alpha = 1.0f;
             self.lblLocation.alpha = 1.0f;
             self.btnLike.alpha = 1.0f;
+            self.btnShare.alpha = 1.0f;
             return;
         }
         
@@ -290,6 +292,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             self.lblCaption.alpha = 0.0f;
             self.lblLocation.alpha = 0.0f;
             self.btnLike.alpha = 0.0f;
+            self.btnShare.alpha = 0.0f;
             return;
         }
         
@@ -297,6 +300,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         self.lblCaption.alpha = d;
         self.lblLocation.alpha = d;
         self.btnLike.alpha = d;
+        self.btnShare.alpha = d;
     }
 }
 

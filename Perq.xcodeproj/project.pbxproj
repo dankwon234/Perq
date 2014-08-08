@@ -20,6 +20,7 @@
 		5C4AEF0519944D46007825C1 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4AEF0419944D46007825C1 /* logo@2x.png */; };
 		5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7658221991719100F07C55 /* bgMenuButton@2x.png */; };
 		5C783747198DEA2400A17BB1 /* bgBlurry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */; };
+		5C83DAE719949E7C00FCFAAD /* iconShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */; };
 		5CA286FF199049E3009AD3A8 /* PQCreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */; };
 		5CA2870119905177009AD3A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA2870019905177009AD3A8 /* CoreLocation.framework */; };
 		5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA2870419905780009AD3A8 /* AFHTTPClient.m */; };
@@ -88,6 +89,7 @@
 		5C4AEF0419944D46007825C1 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		5C7658221991719100F07C55 /* bgMenuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgMenuButton@2x.png"; sourceTree = "<group>"; };
 		5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgBlurry@2x.png"; sourceTree = "<group>"; };
+		5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconShare@2x.png"; sourceTree = "<group>"; };
 		5CA286FD199049E3009AD3A8 /* PQCreatePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCreatePostViewController.h; sourceTree = "<group>"; };
 		5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCreatePostViewController.m; sourceTree = "<group>"; };
 		5CA2870019905177009AD3A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -202,6 +204,7 @@
 				5C7658221991719100F07C55 /* bgMenuButton@2x.png */,
 				5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */,
 				5CC5653E198DCC560015A17D /* iconComment@2x.png */,
+				5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */,
 				5CC5653C198DC6E60015A17D /* iconHeart@2x.png */,
 				5CE58783198F493D00C4241F /* btnCamera@2x.png */,
 			);
@@ -448,6 +451,7 @@
 				5CA98EE11992CC8E0001D773 /* backarrow@2x.png in Resources */,
 				5C3C890C19933B9A007BA434 /* placeholder@2x.png in Resources */,
 				5C4AEF0519944D46007825C1 /* logo@2x.png in Resources */,
+				5C83DAE719949E7C00FCFAAD /* iconShare@2x.png in Resources */,
 				5CE31E5D198C6B7700384BF8 /* Images.xcassets in Resources */,
 				5CA98EE31992D0030001D773 /* bgCircles@2x.png in Resources */,
 				5C3C890919933AEA007BA434 /* icon_settings@2x.png in Resources */,
