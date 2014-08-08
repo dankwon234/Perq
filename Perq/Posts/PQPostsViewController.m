@@ -98,7 +98,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     
     
     UIImage *btnMenuButton = [UIImage imageNamed:@"bgMenuButton.png"];
-    NSArray *menuOptions = @[@"Featured", @"Nearby", @"My Perqs", @"About"];
+    NSArray *menuOptions = @[@"Featured", @"Nearby", @"My Percs", @"About"];
     for (int i=0; i<menuOptions.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.tag = 1000+i;
