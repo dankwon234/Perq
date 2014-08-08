@@ -136,11 +136,15 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     [view addSubview:self.lblCaption];
     y += self.lblCaption.frame.size.height+20.0f;
     
-    UIImage *imgHeart = [UIImage imageNamed:@"iconHeart.png"];
+    UIImage *imgHeart = ([self.post.likes containsObject:self.session.deviceHash]) ? [UIImage imageNamed:@"iconHeartRed.png"] : [UIImage imageNamed:@"iconHeart.png"];
     self.btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
     self.btnLike.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.btnLike.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
     [self.btnLike setBackgroundImage:imgHeart forState:UIControlStateNormal];
+    [self.btnLike setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self.btnLike setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
+    self.btnLike.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+    [self.btnLike addTarget:self action:@selector(likePost:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:self.btnLike];
     x += self.btnLike.frame.size.width;
     
@@ -440,8 +444,39 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         }
         
     }];
+}
+
+- (void)likePost:(UIButton *)btn
+{
+    UIImage *btnImage = nil;
+    UIColor *btnColor = nil;
+    if ([self.post.likes containsObject:self.session.deviceHash]){ // remove like
+        [self.post.likes removeObject:self.session.deviceHash];
+        btnImage = [UIImage imageNamed:@"iconHeart@2x"];
+        btnColor = [UIColor darkGrayColor];
+        
+    }
+    else{
+        [self.post.likes addObject:self.session.deviceHash];
+        btnImage = [UIImage imageNamed:@"iconHeartRed@2x"];
+        btnColor = [UIColor whiteColor];
+    }
     
-    
+    [UIView transitionWithView:btn
+                      duration:0.5f
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        btn.alpha = 1.0f;
+                        [btn setBackgroundImage:btnImage forState:UIControlStateNormal];
+                        [btn setTitleColor:btnColor forState:UIControlStateNormal];
+                        [btn setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
+                    }
+                    completion:^(BOOL finished){
+                        
+                        // send api call
+                        
+                        
+                    }];
 }
 
 
