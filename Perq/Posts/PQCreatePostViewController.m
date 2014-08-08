@@ -11,6 +11,7 @@
 
 @interface PQCreatePostViewController ()
 @property (strong, nonatomic) PQPost *post;
+@property (strong, nonatomic) UILabel *lblLocation;
 @property (strong, nonatomic) UITextView *captionTextView;
 @end
 
@@ -38,7 +39,9 @@ static NSString *placeholder = @"Enter a short caption here.";
 - (void)loadView
 {
     UIView *view = [self baseView:NO];
-    view.backgroundColor = [UIColor redColor];
+    static CGFloat rgbMax = 255.0f;
+    static CGFloat rgb = 240.0f;
+    view.backgroundColor = [UIColor colorWithRed:rgb/rgbMax green:rgb/rgbMax blue:rgb/rgbMax alpha:1];
     CGRect frame = view.frame;
     
     CGFloat dimen = 0.70f*kPostCellDimension;
@@ -62,21 +65,34 @@ static NSString *placeholder = @"Enter a short caption here.";
     
     x += dimen+8.0f;
     self.captionTextView = [[UITextView alloc] initWithFrame:CGRectMake(x, y, frame.size.width-x-padding, dimen)];
+    self.captionTextView.backgroundColor = self.captionTextView.backgroundColor;
     self.captionTextView.returnKeyType = UIReturnKeyDone;
-    self.captionTextView.backgroundColor = [UIColor yellowColor];
-    self.captionTextView.textColor = [UIColor lightGrayColor];
+    self.captionTextView.backgroundColor = view.backgroundColor;
+    self.captionTextView.textColor = [UIColor darkGrayColor];
     self.captionTextView.text = placeholder;
-    self.captionTextView.font = [UIFont fontWithName:@"Verdana" size:16.0f];
+    self.captionTextView.font = [UIFont fontWithName:@"Verdana" size:14.0f];
     self.captionTextView.delegate = self;
     [view addSubview:self.captionTextView];
     
-    y += dimen+padding;
+    y += dimen+10;
+    self.lblLocation = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, y, frame.size.width-10.0f, 20.0f)];
+    self.lblLocation.backgroundColor = self.captionTextView.backgroundColor;
+    self.lblLocation.textAlignment = NSTextAlignmentRight;
+    self.lblLocation.textColor = [UIColor lightGrayColor];
+    self.lblLocation.font = [UIFont systemFontOfSize:12];
+    self.lblLocation.text = [NSString stringWithFormat:@"%@, %@", self.post.city, [self.post.state uppercaseString]];
+    [view addSubview:self.lblLocation];
     
+    y += self.lblLocation.frame.size.height;
     UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0.0f, y, frame.size.width, frame.size.height)];
-    bottom.backgroundColor = [UIColor greenColor];
+    bottom.backgroundColor = kRed;
     
     UIButton *btnUpload = [UIButton buttonWithType:UIButtonTypeCustom];
     btnUpload.frame = CGRectMake(padding, padding, frame.size.width-2*padding, 44.0f);
+    btnUpload.backgroundColor = kGreen;
+    btnUpload.layer.cornerRadius = 4.0f;
+    btnUpload.layer.masksToBounds = YES;
+    btnUpload.titleLabel.font = [UIFont fontWithName:@"Verdana" size:16.0f];
     [btnUpload setTitle:@"Upload Photo" forState:UIControlStateNormal];
     [btnUpload addTarget:self action:@selector(submitPost:) forControlEvents:UIControlEventTouchUpInside];
     [bottom addSubview:btnUpload];
