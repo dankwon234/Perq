@@ -27,10 +27,11 @@
 @property (strong, nonatomic) UIView *verticalLine;
 @property (strong, nonatomic) NSMutableArray *menuButtons;
 @property (strong, nonatomic) UIImageView *logo;
-@property (nonatomic) BOOL isNaturalState;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic) BOOL isNaturalState;
 @property (nonatomic) NSTimeInterval now;
 @property (nonatomic) int selectedMenuIndex;
+@property (nonatomic) BOOL showNearbyPosts;
 @end
 
 static NSString *cellIdentifier = @"cellIdentifier";
@@ -45,6 +46,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
         self.selectedMenuIndex = 0;
         self.selectedPostIcon = nil;
         self.isNaturalState = YES;
+        self.showNearbyPosts = NO;
         self.posts = [NSMutableArray array];
         self.menuButtons = [NSMutableArray array];
         
@@ -261,15 +263,21 @@ static NSString *cellIdentifier = @"cellIdentifier";
 - (void)findLocation
 {
     [self.loadingIndicator startLoading];
-
-    if (self.locationManager==nil){
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        self.locationManager.delegate = self;
-    }
-    
+    [self launchLocationManager];
     [self.locationManager startUpdatingLocation];
 }
+
+- (void)launchLocationManager
+{
+    if (self.locationManager)
+        return;
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
+}
+
+
 
 - (void)menuOptionSelected:(UIButton *)btn
 {
@@ -295,7 +303,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
             return;
         }
         
-
+        self.showNearbyPosts = YES;
         [self.loadingIndicator startLoading];
         [self slidePostsView:self.view.frame.size.height completion:@selector(findLocation)];
     }
@@ -453,10 +461,16 @@ static NSString *cellIdentifier = @"cellIdentifier";
 {
 //    NSLog(@"postPicture: ");
     
-    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Select Source" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"photo library", @"take photo", nil];
-    actionsheet.frame = CGRectMake(0, 150, self.view.frame.size.width, 100);
-    actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [actionsheet showInView:[UIApplication sharedApplication].keyWindow];
+    if (self.session.latitude==0.0f && self.session.longitude==0.0f){ // fetch location
+        [self.loadingIndicator startLoading];
+        [self launchLocationManager];
+        
+        self.showNearbyPosts = NO;
+        [self.locationManager startUpdatingLocation];
+        return;
+    }
+    
+    [self showImageSourceOptions];
 }
 
 
@@ -697,7 +711,6 @@ static NSString *cellIdentifier = @"cellIdentifier";
     if (w != h){
         CGFloat dimen = (w < h) ? w : h;
         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0.5*(image.size.width-dimen), 0.5*(image.size.height-dimen), dimen, dimen));
-//        image = [UIImage imageWithCGImage:imageRef];
         image = [UIImage imageWithData:UIImageJPEGRepresentation([UIImage imageWithCGImage:imageRef], 0.5f)];
         CGImageRelease(imageRef);
     }
@@ -792,11 +805,19 @@ static NSString *cellIdentifier = @"cellIdentifier";
                 self.session.state = locationInfo[@"State"];
                 self.session.zip = locationInfo[@"ZIP"];
                 
-                NSString *cityState = [NSString stringWithFormat:@"%@, %@", self.session.city, self.session.state];
-                UIButton *btnLocation = (UIButton *)self.menuButtons[1];
-                [btnLocation setTitle:cityState forState:UIControlStateNormal];
+                if (self.showNearbyPosts){
+                    NSString *cityState = [NSString stringWithFormat:@"%@, %@", self.session.city, self.session.state];
+                    UIButton *btnLocation = (UIButton *)self.menuButtons[1];
+                    [btnLocation setTitle:cityState forState:UIControlStateNormal];
+                    [self fetchNearbyPosts];
+                }
+                else{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self showImageSourceOptions];
+                    });
+
+                }
                 
-                [self fetchNearbyPosts];
 
             });
 
@@ -806,7 +827,14 @@ static NSString *cellIdentifier = @"cellIdentifier";
             [self showAlertWithtTitle:@"Error" message:@"Could not find your location."];
         }
     }];
-    
+}
+
+- (void)showImageSourceOptions
+{
+    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Select Source" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"photo library", @"take photo", nil];
+    actionsheet.frame = CGRectMake(0, 150, self.view.frame.size.width, 100);
+    actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionsheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 
