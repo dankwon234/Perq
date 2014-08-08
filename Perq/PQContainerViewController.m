@@ -51,6 +51,8 @@
     self.postsVc = [[PQPostsViewController alloc] init];
     
     UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:self.postsVc];
+    navCtr.navigationBar.barTintColor = kGreen;
+    navCtr.navigationBar.tintColor = [UIColor whiteColor];
     [navCtr setNavigationBarHidden:YES animated:NO];
     
     [self addChildViewController:navCtr];
