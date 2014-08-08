@@ -28,6 +28,9 @@
 @synthesize likes;
 @synthesize deviceHash;
 @synthesize commentCount;
+@synthesize formattedDate;
+
+#define kOneDay 24*60*60 // one day in seconds
 
 - (id)init
 {
@@ -102,9 +105,33 @@
                 [self.comments addObject:comment];
             }
         }
-
-
         
+        if ([key isEqualToString:@"timestamp"]){
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"EEE MMM dd HH:mm:ss z yyyy"]; //Tue Jun 17 00:52:49 UTC 2014
+            
+            NSString *ts = info[@"timestamp"];
+            self.timestamp = [dateFormat dateFromString:ts];
+            
+            NSTimeInterval sinceNow = -1*[self.timestamp timeIntervalSinceNow];
+            if (sinceNow < kOneDay){
+                double mins = sinceNow/60.0f;
+                if (mins < 60){
+                    self.formattedDate = (mins < 2) ? [NSString stringWithFormat:@"%d minute ago", (int)mins] : [NSString stringWithFormat:@"%d minutes ago", (int)mins];
+                    return;
+                }
+                
+                double hours = mins/60.0f;
+                self.formattedDate = [NSString stringWithFormat:@"%d hours ago", (int)hours];
+                return;
+            }
+            
+            
+            NSArray *parts = [ts componentsSeparatedByString:@" "];
+            if (parts.count > 5)
+                self.formattedDate = [NSString stringWithFormat:@"%@ %@", parts[1], parts[2]];
+            
+        }
     }
 }
 

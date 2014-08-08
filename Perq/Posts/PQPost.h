@@ -17,6 +17,8 @@
 @property (copy, nonatomic) NSString *zip;
 @property (copy, nonatomic) NSString *image;
 @property (copy, nonatomic) NSString *deviceHash;
+@property (copy, nonatomic) NSString *formattedDate;
+@property (strong, nonatomic) NSDate *timestamp;
 @property (strong, nonatomic) NSMutableArray *likes;
 @property (strong, nonatomic) UIImage *imageData;
 @property (strong, nonatomic) NSMutableArray *comments;
