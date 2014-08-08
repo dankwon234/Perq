@@ -823,7 +823,9 @@ static NSString *cellIdentifier = @"cellIdentifier";
             
         }
         else{
-            [self showAlertWithtTitle:@"Error" message:@"Could not find your location."];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showAlertWithtTitle:@"Error" message:@"Could not find your location."];
+            });
         }
     }];
 }
