@@ -24,6 +24,7 @@
 @property (strong, nonatomic) UIImageView *fullImage;
 @property (strong, nonatomic) UIView *commentsFieldView;
 @property (strong, nonatomic) UITextView *commentsField;
+@property (strong, nonatomic) UIButton *btnLike;
 @property (nonatomic) BOOL textFieldCanDismiss;
 @end
 
@@ -132,6 +133,23 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self.lblCaption.alpha = 0.0f;
     self.lblCaption.font = verdana;
     [view addSubview:self.lblCaption];
+    y += self.lblCaption.frame.size.height+20.0f;
+    
+    UIImage *imgHeart = [UIImage imageNamed:@"iconHeart.png"];
+    self.btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btnLike.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.btnLike.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
+    [self.btnLike setBackgroundImage:imgHeart forState:UIControlStateNormal];
+    [view addSubview:self.btnLike];
+    x += self.btnLike.frame.size.width+20.0f;
+    
+    UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnShare.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    btnShare.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
+    [btnShare setTitle:@"Share" forState:UIControlStateNormal];
+    [btnShare setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [view addSubview:btnShare];
+
     
     UIImage *backArrow = [UIImage imageNamed:@"backarrow.png"];
     self.btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -261,6 +279,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             
             self.lblCaption.alpha = 1.0f;
             self.lblLocation.alpha = 1.0f;
+            self.btnLike.alpha = 1.0f;
             return;
         }
         
@@ -270,12 +289,14 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         if (verticalOffset > 100.0f){
             self.lblCaption.alpha = 0.0f;
             self.lblLocation.alpha = 0.0f;
+            self.btnLike.alpha = 0.0f;
             return;
         }
         
         double d = 1-(verticalOffset/100.0f);
         self.lblCaption.alpha = d;
         self.lblLocation.alpha = d;
+        self.btnLike.alpha = d;
     }
 }
 
