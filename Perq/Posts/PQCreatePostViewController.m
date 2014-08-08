@@ -197,7 +197,9 @@ static NSString *placeholder = @"Enter a short caption here.";
             NSString *confirmation = results[@"confirmation"];
             NSLog(@"%@", [results description]);
             if ([confirmation isEqualToString:@"success"]){
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
                 
             }
             else{
@@ -206,6 +208,7 @@ static NSString *placeholder = @"Enter a short caption here.";
         }
     }];
 }
+
 
 
 
