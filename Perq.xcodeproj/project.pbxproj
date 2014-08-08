@@ -15,7 +15,8 @@
 		5C3C890919933AEA007BA434 /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C890719933AEA007BA434 /* icon_settings@2x.png */; };
 		5C3C890A19933AEA007BA434 /* icon_spotlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C890819933AEA007BA434 /* icon_spotlight@2x.png */; };
 		5C3C890C19933B9A007BA434 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C890B19933B9A007BA434 /* placeholder@2x.png */; };
-		5C3C891219933F28007BA434 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C891119933F28007BA434 /* Default@2x.png */; };
+		5C4AEF0119944C43007825C1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4AEEFF19944C43007825C1 /* Default-568h@2x.png */; };
+		5C4AEF0319944C55007825C1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4AEF0219944C55007825C1 /* Default@2x.png */; };
 		5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7658221991719100F07C55 /* bgMenuButton@2x.png */; };
 		5C783747198DEA2400A17BB1 /* bgBlurry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */; };
 		5CA286FF199049E3009AD3A8 /* PQCreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */; };
@@ -57,7 +58,6 @@
 		5CE58780198F427D00C4241F /* UIView+PQViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */; };
 		5CE58784198F493D00C4241F /* btnCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE58783198F493D00C4241F /* btnCamera@2x.png */; };
 		5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE90CB4198DA1DC00D8848A /* PQPost.m */; };
-		5CF26D2F199355BD00A6448A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF26D2E199355BD00A6448A /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,8 @@
 		5C3C890719933AEA007BA434 /* icon_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_settings@2x.png"; sourceTree = "<group>"; };
 		5C3C890819933AEA007BA434 /* icon_spotlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_spotlight@2x.png"; sourceTree = "<group>"; };
 		5C3C890B19933B9A007BA434 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
-		5C3C891119933F28007BA434 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5C4AEEFF19944C43007825C1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5C4AEF0219944C55007825C1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5C7658221991719100F07C55 /* bgMenuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgMenuButton@2x.png"; sourceTree = "<group>"; };
 		5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgBlurry@2x.png"; sourceTree = "<group>"; };
 		5CA286FD199049E3009AD3A8 /* PQCreatePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCreatePostViewController.h; sourceTree = "<group>"; };
@@ -151,7 +152,6 @@
 		5CE58783198F493D00C4241F /* btnCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnCamera@2x.png"; sourceTree = "<group>"; };
 		5CE90CB3198DA1DC00D8848A /* PQPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQPost.h; sourceTree = "<group>"; };
 		5CE90CB4198DA1DC00D8848A /* PQPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQPost.m; sourceTree = "<group>"; };
-		5CF26D2E199355BD00A6448A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,8 +190,8 @@
 		5C0590D1198C7BA700002108 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				5CF26D2E199355BD00A6448A /* Default-568h@2x.png */,
-				5C3C891119933F28007BA434 /* Default@2x.png */,
+				5C4AEF0219944C55007825C1 /* Default@2x.png */,
+				5C4AEEFF19944C43007825C1 /* Default-568h@2x.png */,
 				5C3C890519933A93007BA434 /* icon@2x.png */,
 				5C3C890719933AEA007BA434 /* icon_settings@2x.png */,
 				5C3C890819933AEA007BA434 /* icon_spotlight@2x.png */,
@@ -438,20 +438,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4AEF0319944C55007825C1 /* Default@2x.png in Resources */,
 				5C3C890A19933AEA007BA434 /* icon_spotlight@2x.png in Resources */,
 				5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */,
 				5CE58784198F493D00C4241F /* btnCamera@2x.png in Resources */,
 				5CC5653F198DCC560015A17D /* iconComment@2x.png in Resources */,
-				5C3C891219933F28007BA434 /* Default@2x.png in Resources */,
 				5CC5653D198DC6E60015A17D /* iconHeart@2x.png in Resources */,
 				5CE31E55198C6B7700384BF8 /* InfoPlist.strings in Resources */,
 				5CA98EE11992CC8E0001D773 /* backarrow@2x.png in Resources */,
-				5CF26D2F199355BD00A6448A /* Default-568h@2x.png in Resources */,
 				5C3C890C19933B9A007BA434 /* placeholder@2x.png in Resources */,
 				5CE31E5D198C6B7700384BF8 /* Images.xcassets in Resources */,
 				5CA98EDF1992CA840001D773 /* logo@2x.png in Resources */,
 				5CA98EE31992D0030001D773 /* bgCircles@2x.png in Resources */,
 				5C3C890919933AEA007BA434 /* icon_settings@2x.png in Resources */,
+				5C4AEF0119944C43007825C1 /* Default-568h@2x.png in Resources */,
 				5C783747198DEA2400A17BB1 /* bgBlurry@2x.png in Resources */,
 				5C3C890619933A93007BA434 /* icon@2x.png in Resources */,
 			);
