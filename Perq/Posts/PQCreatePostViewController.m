@@ -25,7 +25,11 @@ static NSString *placeholder = @"Enter a short caption here.";
     if (self) {
         self.post = [[PQPost alloc] init];
         self.post.deviceHash = self.session.deviceHash;
-        
+        self.post.city = self.session.city;
+        self.post.state = self.session.state;
+        self.post.zip = self.session.zip;
+        self.post.latitude = self.session.latitude;
+        self.post.longitude = self.session.longitude;
     }
     
     return self;
