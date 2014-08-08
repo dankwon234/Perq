@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PQDateFormatter.h"
 
 @interface PQPost : NSObject
 
@@ -18,6 +19,7 @@
 @property (copy, nonatomic) NSString *image;
 @property (copy, nonatomic) NSString *deviceHash;
 @property (copy, nonatomic) NSString *formattedDate;
+@property (strong, nonatomic) PQDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDate *timestamp;
 @property (strong, nonatomic) NSMutableArray *likes;
 @property (strong, nonatomic) UIImage *imageData;
@@ -30,4 +32,5 @@
 - (NSString *)jsonRepresentation;
 - (void)populate:(NSDictionary *)info;
 - (void)fetchImage;
+- (void)formatTimestamp;
 @end

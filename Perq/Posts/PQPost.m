@@ -29,6 +29,7 @@
 @synthesize deviceHash;
 @synthesize commentCount;
 @synthesize formattedDate;
+@synthesize dateFormatter;
 
 #define kOneDay 24*60*60 // one day in seconds
 
@@ -36,9 +37,11 @@
 {
     self = [super init];
     if (self){
+        self.dateFormatter = [PQDateFormatter sharedDateFormatter];
         self.comments = [NSMutableArray array];
         self.likes = [NSMutableArray array];
         self.imageData = nil;
+        self.timestamp = nil;
         self.deviceHash = @"none";
         self.uniqueId = @"none";
         self.image = @"none";
@@ -107,32 +110,45 @@
         }
         
         if ([key isEqualToString:@"timestamp"]){
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"EEE MMM dd HH:mm:ss z yyyy"]; //Tue Jun 17 00:52:49 UTC 2014
-            
-            NSString *ts = info[@"timestamp"];
-            self.timestamp = [dateFormat dateFromString:ts];
-            
-            NSTimeInterval sinceNow = -1*[self.timestamp timeIntervalSinceNow];
-            if (sinceNow < kOneDay){
-                double mins = sinceNow/60.0f;
-                if (mins < 60){
-                    self.formattedDate = (mins < 2) ? [NSString stringWithFormat:@"%d minute ago", (int)mins] : [NSString stringWithFormat:@"%d minutes ago", (int)mins];
-                    return;
-                }
+
+            if (self.timestamp==nil){
+                NSString *ts = info[@"timestamp"];
+                self.timestamp = [self.dateFormatter dateFromString:ts];
                 
-                double hours = mins/60.0f;
-                self.formattedDate = [NSString stringWithFormat:@"%d hours ago", (int)hours];
-                return;
+                // NOTE: this is process intensive so we throw it in the background 
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [self formatTimestamp];
+                });
             }
-            
-            
-            NSArray *parts = [ts componentsSeparatedByString:@" "];
-            if (parts.count > 5)
-                self.formattedDate = [NSString stringWithFormat:@"%@ %@", parts[1], parts[2]];
-            
         }
+        
     }
+}
+
+- (void)formatTimestamp
+{
+    NSTimeInterval sinceNow = -1*[self.timestamp timeIntervalSinceNow];
+    if (sinceNow < kOneDay){
+        double mins = sinceNow/60.0f;
+        if (mins < 60){
+            self.formattedDate = (mins < 2) ? [NSString stringWithFormat:@"%d minute ago", (int)mins] : [NSString stringWithFormat:@"%d minutes ago", (int)mins];
+            return;
+        }
+        
+        double hours = mins/60.0f;
+        self.formattedDate = [NSString stringWithFormat:@"%d hours ago", (int)hours];
+        return;
+    }
+    
+    NSString *dateString = [self.timestamp description];
+    NSLog(@"FORMATTED DATE: %@", dateString);
+    
+    NSArray *parts = [dateString componentsSeparatedByString:@" "]; // 2014-08-22
+    parts = [parts[0] componentsSeparatedByString:@"-"];
+    NSString *month = self.dateFormatter.monthsArray[[parts[1] intValue]-1];
+    dateString = [NSString stringWithFormat:@"%@ %@, %@", month, parts[2], parts[0]];
+    
+    self.formattedDate = dateString;
 }
 
 - (void)fetchImage
