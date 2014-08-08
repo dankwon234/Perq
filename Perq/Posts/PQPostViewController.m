@@ -26,6 +26,7 @@
 @property (strong, nonatomic) UITextView *commentsField;
 @property (strong, nonatomic) UIButton *btnLike;
 @property (strong, nonatomic) UIButton *btnShare;
+@property (strong, nonatomic) UILabel *lblDate;
 @property (nonatomic) BOOL textFieldCanDismiss;
 @end
 
@@ -164,6 +165,17 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     [self.btnShare setBackgroundImage:imgShare forState:UIControlStateNormal];
     self.btnShare.frame = CGRectMake(x, y, imgShare.size.width, imgShare.size.height);
     [view addSubview:self.btnShare];
+    x += self.btnShare.frame.size.width;
+    
+    self.lblDate = [[UILabel alloc] initWithFrame:CGRectMake(x, y+8.5f, frame.size.width-x-10.0f, 22.0f)];
+    self.lblDate.textColor = [UIColor darkGrayColor];
+    self.lblDate.textAlignment = NSTextAlignmentCenter;
+    self.lblDate.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.lblDate.backgroundColor = [UIColor whiteColor];
+    self.lblDate.layer.cornerRadius = 4.0f;
+    self.lblDate.text = @"Aug 7";
+    self.lblDate.font = [UIFont systemFontOfSize:12.0f];
+    [view addSubview:self.lblDate];
 
     
     UIImage *backArrow = [UIImage imageNamed:@"backarrow.png"];
@@ -296,6 +308,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             self.lblLocation.alpha = 1.0f;
             self.btnLike.alpha = 1.0f;
             self.btnShare.alpha = 1.0f;
+            self.lblDate.alpha = 1.0f;
             return;
         }
         
@@ -307,6 +320,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             self.lblLocation.alpha = 0.0f;
             self.btnLike.alpha = 0.0f;
             self.btnShare.alpha = 0.0f;
+            self.lblDate.alpha = 0.0f;
             return;
         }
         
@@ -315,6 +329,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         self.lblLocation.alpha = d;
         self.btnLike.alpha = d;
         self.btnShare.alpha = d;
+        self.lblDate.alpha = d;
     }
 }
 
