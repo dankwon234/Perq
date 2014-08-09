@@ -14,6 +14,8 @@
 
 @implementation PQViewController
 @synthesize session;
+@synthesize socialAccountsMgr;
+@synthesize loadingIndicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,6 +23,7 @@
     if (self) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.session = [PQSession sharedSession];
+        self.socialAccountsMgr = [PQSocialAccountsManager sharedAccountManager];
 
     }
     return self;
