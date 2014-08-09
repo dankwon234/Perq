@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C04B26C1996DE57005CEC81 /* PQSocialAccountsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04B26B1996DE57005CEC81 /* PQSocialAccountsManager.m */; };
+		5C04B26E1996DE9A005CEC81 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C04B26D1996DE9A005CEC81 /* Accounts.framework */; };
+		5C04B2701996DEA0005CEC81 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C04B26F1996DEA0005CEC81 /* Social.framework */; };
 		5C0590C8198C735400002108 /* PQPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590C7198C735400002108 /* PQPostsViewController.m */; };
 		5C0590CB198C753100002108 /* PQCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590CA198C753100002108 /* PQCollectionViewFlowLayout.m */; };
 		5C0590CE198C7A2100002108 /* PQCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590CD198C7A2100002108 /* PQCollectionViewCell.m */; };
@@ -75,6 +78,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C04B26A1996DE57005CEC81 /* PQSocialAccountsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQSocialAccountsManager.h; sourceTree = "<group>"; };
+		5C04B26B1996DE57005CEC81 /* PQSocialAccountsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQSocialAccountsManager.m; sourceTree = "<group>"; };
+		5C04B26D1996DE9A005CEC81 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		5C04B26F1996DEA0005CEC81 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5C0590C6198C735400002108 /* PQPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQPostsViewController.h; sourceTree = "<group>"; };
 		5C0590C7198C735400002108 /* PQPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQPostsViewController.m; sourceTree = "<group>"; };
 		5C0590C9198C753100002108 /* PQCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -168,6 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C04B2701996DEA0005CEC81 /* Social.framework in Frameworks */,
+				5C04B26E1996DE9A005CEC81 /* Accounts.framework in Frameworks */,
 				5CA2870119905177009AD3A8 /* CoreLocation.framework in Frameworks */,
 				5CE31E4D198C6B7700384BF8 /* CoreGraphics.framework in Frameworks */,
 				5CE31E4F198C6B7700384BF8 /* UIKit.framework in Frameworks */,
@@ -277,6 +286,8 @@
 		5CE31E49198C6B7600384BF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C04B26F1996DEA0005CEC81 /* Social.framework */,
+				5C04B26D1996DE9A005CEC81 /* Accounts.framework */,
 				5CA2870019905177009AD3A8 /* CoreLocation.framework */,
 				5CE31E4A198C6B7600384BF8 /* Foundation.framework */,
 				5CE31E4C198C6B7700384BF8 /* CoreGraphics.framework */,
@@ -355,6 +366,8 @@
 				5CE58775198F2A8200C4241F /* UIImage+PQImageEffects.m */,
 				5CE5877E198F427C00C4241F /* UIView+PQViewAdditions.h */,
 				5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */,
+				5C04B26A1996DE57005CEC81 /* PQSocialAccountsManager.h */,
+				5C04B26B1996DE57005CEC81 /* PQSocialAccountsManager.m */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -500,6 +513,7 @@
 				5CA2871819905780009AD3A8 /* AFImageRequestOperation.m in Sources */,
 				5CA2871C19905780009AD3A8 /* AFURLConnectionOperation.m in Sources */,
 				5CE31E57198C6B7700384BF8 /* main.m in Sources */,
+				5C04B26C1996DE57005CEC81 /* PQSocialAccountsManager.m in Sources */,
 				5CA98EDC1992A8B80001D773 /* PQComment.m in Sources */,
 				5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */,
 				5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */,
