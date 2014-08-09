@@ -52,7 +52,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 - (void)dealloc
 {
     [self.commentsCollectionView removeObserver:self forKeyPath:@"contentOffset"];
-//    [self.lblCaption removeObserver:self forKeyPath:@"text"];
 }
 
 - (void)loadView
@@ -161,6 +160,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     
     UIImage *imgShare = [UIImage imageNamed:@"iconShare.png"];
     self.btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
     self.btnShare.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.btnShare setBackgroundImage:imgShare forState:UIControlStateNormal];
     self.btnShare.frame = CGRectMake(x, y, imgShare.size.width, imgShare.size.height);
@@ -514,6 +514,50 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
                         
                     }];
 }
+
+- (void)btnShareAction:(UIButton *)btn
+{
+    NSLog(@"btnShareAction:");
+    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", nil];
+    actionsheet.frame = CGRectMake(0, 150, self.view.frame.size.width, 100);
+    actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionsheet showInView:[UIApplication sharedApplication].keyWindow];
+
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"actionSheet clickedButtonAtIndex: %d", buttonIndex);
+    if (buttonIndex==0){
+        
+        [self.socialAccountsMgr requestTwitterAccess:^(id result, NSError *error){
+            if (error){
+                NSLog(@"TEST 1");
+                [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+            }
+            else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+                    [tweetSheet setInitialText:@"Tweet!"];
+                    [tweetSheet addImage:self.post.imageData];
+                    [self presentViewController:tweetSheet animated:YES completion:nil];
+                });
+                
+                
+            }
+            
+            
+        }];
+        
+    }
+    
+    if (buttonIndex==1){
+//        [self launchImageSelector:UIImagePickerControllerSourceTypeCamera];
+    }
+    
+}
+
 
 
 #pragma mark - UITextViewDelegate

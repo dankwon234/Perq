@@ -9,7 +9,7 @@
 #import "PQViewController.h"
 #import "PQPost.h"
 
-@interface PQPostViewController : PQViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UITextViewDelegate>
+@interface PQPostViewController : PQViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UITextViewDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) PQPost *post;
 @property (nonatomic) CGFloat offset;
