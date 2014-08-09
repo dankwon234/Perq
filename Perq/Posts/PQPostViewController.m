@@ -529,11 +529,9 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"actionSheet clickedButtonAtIndex: %d", buttonIndex);
-    if (buttonIndex==0){
-        
+    if (buttonIndex==0){ // Twitter
         [self.socialAccountsMgr requestTwitterAccess:^(id result, NSError *error){
             if (error){
-                NSLog(@"TEST 1");
                 [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
             }
             else{
@@ -543,17 +541,31 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
                     [tweetSheet addImage:self.post.imageData];
                     [self presentViewController:tweetSheet animated:YES completion:nil];
                 });
-                
-                
             }
-            
-            
         }];
         
     }
     
-    if (buttonIndex==1){
-//        [self launchImageSelector:UIImagePickerControllerSourceTypeCamera];
+    if (buttonIndex==1){ // Facebook
+        [self.socialAccountsMgr requestFacebookAccess:kFacebookPermissions completionBlock:^(id result, NSError *error){
+            if (error){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+                });
+            }
+            else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    SLComposeViewController *facebookSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+                    [facebookSheet setInitialText:@"FB SHARE!"];
+                    [facebookSheet addImage:self.post.imageData];
+                    [self presentViewController:facebookSheet animated:YES completion:nil];
+                });
+
+                
+            }
+            
+        }];
+        
     }
     
 }
