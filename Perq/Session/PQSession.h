@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *state;
 @property (copy, nonatomic) NSString *zip;
 @property (strong, nonatomic) PQDevice *device;
+@property (nonatomic) BOOL firstSession;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 + (PQSession *)sharedSession;
