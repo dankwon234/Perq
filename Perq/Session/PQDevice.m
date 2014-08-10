@@ -7,6 +7,7 @@
 //
 
 #import "PQDevice.h"
+#import "PQWebServices.h"
 
 @implementation PQDevice
 @synthesize deviceHash;
@@ -78,11 +79,19 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
-
+- (void)registerDevice
+{
+    [[PQWebServices sharedInstance] registerDevice:self completion:^(id result, NSError *error){
+        
+    }];
+    
+}
 
 - (void)updateDevice
 {
-    
+    [[PQWebServices sharedInstance] updateDevice:self completion:^(id result, NSError *error){
+        
+    }];
 }
 
 

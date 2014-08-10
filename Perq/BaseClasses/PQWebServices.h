@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PQPost.h"
 #import "PQComment.h"
+#import "PQDevice.h"
 
 #define kBaseUrl @"http://thegrid-perq.appspot.com/"
 
@@ -38,5 +39,10 @@ typedef void (^PQWebServiceRequestCompletionBlock)(id result, NSError *error);
 
 // Comments:
 - (void)postComment:(PQComment *)comment completion:(PQWebServiceRequestCompletionBlock)completionBlock;
+
+
+// Devices:
+- (void)registerDevice:(PQDevice *)device completion:(PQWebServiceRequestCompletionBlock)completionBlock;
+- (void)updateDevice:(PQDevice *)device completion:(PQWebServiceRequestCompletionBlock)completionBlock;
 
 @end

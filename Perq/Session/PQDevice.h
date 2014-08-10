@@ -19,5 +19,5 @@
 - (NSDictionary *)parametersDictionary;
 - (NSString *)jsonRepresentation;
 - (void)populate:(NSDictionary *)info;
-
+- (void)registerDevice;
 @end
