@@ -655,8 +655,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (A72TATVK4P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Denny Kwon (A72TATVK4P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -674,7 +674,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "DA151E30-DC72-4C9B-B19C-24BE3FEBA91F";
+				PROVISIONING_PROFILE = "63236040-4B6E-4497-B017-3048B0C3C209";
 				SDKROOT = iphoneos7.0;
 			};
 			name = Debug;
@@ -696,7 +696,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -707,6 +708,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "D15EFF3D-5BCE-487F-86B0-B89059FDEA36";
 				SDKROOT = iphoneos7.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -715,13 +717,13 @@
 		5CE31E74198C6B7700384BF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (A72TATVK4P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Denny Kwon (A72TATVK4P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Perq/Perq-Prefix.pch";
 				INFOPLIST_FILE = "Perq/Perq-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DA151E30-DC72-4C9B-B19C-24BE3FEBA91F";
+				PROVISIONING_PROFILE = "63236040-4B6E-4497-B017-3048B0C3C209";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -729,10 +731,12 @@
 		5CE31E75198C6B7700384BF8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Perq/Perq-Prefix.pch";
 				INFOPLIST_FILE = "Perq/Perq-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "D15EFF3D-5BCE-487F-86B0-B89059FDEA36";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
