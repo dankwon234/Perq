@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PQDevice.h"
 
 @interface PQSession : NSObject
 
@@ -15,6 +16,7 @@
 @property (copy, nonatomic) NSString *city;
 @property (copy, nonatomic) NSString *state;
 @property (copy, nonatomic) NSString *zip;
+@property (strong, nonatomic) PQDevice *device;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 + (PQSession *)sharedSession;

@@ -24,6 +24,7 @@
 		5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7658221991719100F07C55 /* bgMenuButton@2x.png */; };
 		5C783747198DEA2400A17BB1 /* bgBlurry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */; };
 		5C83DAE719949E7C00FCFAAD /* iconShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */; };
+		5C9D585219970FD400B91C7E /* PQDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D585119970FD400B91C7E /* PQDevice.m */; };
 		5CA286FF199049E3009AD3A8 /* PQCreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */; };
 		5CA2870119905177009AD3A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA2870019905177009AD3A8 /* CoreLocation.framework */; };
 		5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA2870419905780009AD3A8 /* AFHTTPClient.m */; };
@@ -100,6 +101,8 @@
 		5C7658221991719100F07C55 /* bgMenuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgMenuButton@2x.png"; sourceTree = "<group>"; };
 		5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgBlurry@2x.png"; sourceTree = "<group>"; };
 		5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconShare@2x.png"; sourceTree = "<group>"; };
+		5C9D585019970FD400B91C7E /* PQDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQDevice.h; sourceTree = "<group>"; };
+		5C9D585119970FD400B91C7E /* PQDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQDevice.m; sourceTree = "<group>"; };
 		5CA286FD199049E3009AD3A8 /* PQCreatePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCreatePostViewController.h; sourceTree = "<group>"; };
 		5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCreatePostViewController.m; sourceTree = "<group>"; };
 		5CA2870019905177009AD3A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -260,6 +263,8 @@
 			children = (
 				5CA98EE41992D1020001D773 /* PQSession.h */,
 				5CA98EE51992D1020001D773 /* PQSession.m */,
+				5C9D585019970FD400B91C7E /* PQDevice.h */,
+				5C9D585119970FD400B91C7E /* PQDevice.m */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				5CE31E83198C6B9B00384BF8 /* PQWebServices.m in Sources */,
 				5CE31E86198C6BA400384BF8 /* PQContainerViewController.m in Sources */,
 				5CA286FF199049E3009AD3A8 /* PQCreatePostViewController.m in Sources */,
+				5C9D585219970FD400B91C7E /* PQDevice.m in Sources */,
 				5CA2871A19905780009AD3A8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				5CA2871E19905780009AD3A8 /* UIImageView+AFNetworking.m in Sources */,
 				5CA2871719905780009AD3A8 /* AFHTTPRequestOperation.m in Sources */,

@@ -15,6 +15,7 @@
 @synthesize zip;
 @synthesize latitude;
 @synthesize longitude;
+@synthesize device;
 
 
 - (id)init
@@ -22,10 +23,12 @@
     self = [super init];
     if (self){
         self.deviceHash = @"none";
+        self.device = [PQDevice sharedDevice];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults objectForKey:@"deviceHash"]){
             self.deviceHash = [defaults objectForKey:@"deviceHash"];
+            self.device.deviceToken = self.deviceHash;
             NSLog(@"STORED HASH: %@", self.deviceHash);
         }
         else{
