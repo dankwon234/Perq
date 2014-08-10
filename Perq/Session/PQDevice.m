@@ -42,7 +42,19 @@
 
 - (void)populate:(NSDictionary *)info
 {
-    
+    for (NSString *key in info.allKeys) {
+        if ([key isEqualToString:@"deviceHash"])
+            self.deviceHash = [info objectForKey:key];
+
+        if ([key isEqualToString:@"deviceToken"])
+            self.deviceToken = [info objectForKey:key];
+
+        if ([key isEqualToString:@"phoneNumber"])
+            self.phoneNumber = [info objectForKey:key];
+
+        if ([key isEqualToString:@"contactList"])
+            self.contactList = [NSMutableArray arrayWithArray:[info objectForKey:key]];
+    }
 }
 
 
