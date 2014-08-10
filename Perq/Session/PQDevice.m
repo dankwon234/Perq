@@ -19,7 +19,9 @@
     self = [super init];
     if (self){
         self.contactList = [NSMutableArray array];
-        
+        self.deviceToken = @"none";
+        self.deviceHash = @"none";
+        self.phoneNumber = @"none";
     }
     return self;
 }
@@ -38,7 +40,38 @@
     return shared;
 }
 
+- (void)populate:(NSDictionary *)info
+{
+    
+}
 
+
+- (NSDictionary *)parametersDictionary
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"deviceHash":self.deviceHash, @"deviceToken":self.deviceToken, @"phoneNumber":self.phoneNumber, @"contactList":self.contactList}];
+    
+    return params;
+}
+
+- (NSString *)jsonRepresentation
+{
+    NSDictionary *info = [self parametersDictionary];
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
+    if (error)
+        return nil;
+    
+    
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
+
+
+- (void)updateDevice
+{
+    
+}
 
 
 @end

@@ -15,4 +15,9 @@
 @property (copy, nonatomic) NSString *phoneNumber;
 @property (strong, nonatomic) NSMutableArray *contactList;
 + (PQDevice *)sharedDevice;
+- (void)updateDevice;
+- (NSDictionary *)parametersDictionary;
+- (NSString *)jsonRepresentation;
+- (void)populate:(NSDictionary *)info;
+
 @end
