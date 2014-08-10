@@ -28,11 +28,13 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults objectForKey:@"deviceHash"]){
             self.deviceHash = [defaults objectForKey:@"deviceHash"];
-            self.device.deviceToken = self.deviceHash;
+            self.device.deviceHash = self.deviceHash;
             NSLog(@"STORED HASH: %@", self.deviceHash);
         }
         else{
             self.deviceHash = [self randomStringWithLength:16];
+            self.device.deviceHash = self.deviceHash;
+            [self.device registerDevice];
             [defaults setObject:self.deviceHash forKey:@"deviceHash"];
             [defaults synchronize];
             NSLog(@"CREATED NEW HASH: %@", self.deviceHash);
