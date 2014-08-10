@@ -537,8 +537,9 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-                    [tweetSheet setInitialText:@"Tweet!"];
+                    [tweetSheet setInitialText:@"Saw This on Perc!"];
                     [tweetSheet addImage:self.post.imageData];
+                    [tweetSheet addURL:[NSURL URLWithString:[kBaseUrl stringByAppendingString:@"site/ios"]]];
                     [self presentViewController:tweetSheet animated:YES completion:nil];
                 });
             }
@@ -556,7 +557,8 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     SLComposeViewController *facebookSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-                    [facebookSheet setInitialText:@"FB SHARE!"];
+                    [facebookSheet setInitialText:@"Saw This on Perc!"];
+                    [facebookSheet addURL:[NSURL URLWithString:[kBaseUrl stringByAppendingString:@"site/ios"]]];
                     [facebookSheet addImage:self.post.imageData];
                     [self presentViewController:facebookSheet animated:YES completion:nil];
                 });
