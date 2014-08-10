@@ -11,7 +11,6 @@
 #include <sys/xattr.h>
 
 
-#define kBaseUrl @"http://thegrid-perq.appspot.com/"
 #define kSSLBaseUrl @"https://thegrid-perq.appspot.com/"
 #define kPathUpload @"/api/upload/"
 #define kPathImages @"/api/images/"

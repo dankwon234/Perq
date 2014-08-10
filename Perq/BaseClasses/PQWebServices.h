@@ -10,6 +10,9 @@
 #import "PQPost.h"
 #import "PQComment.h"
 
+#define kBaseUrl @"http://thegrid-perq.appspot.com/"
+
+
 typedef void (^PQWebServiceRequestCompletionBlock)(id result, NSError *error);
 
 
