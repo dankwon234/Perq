@@ -19,7 +19,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.session = [PQSession sharedSession]; // start the session
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults objectForKey:@"deviceToken"]; // check for stored token
+    if (token)
+        self.session.device.deviceToken = token;
+
     
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
@@ -53,9 +59,14 @@
     token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:token forKey:@"deviceToken"];
+    [defaults synchronize];
+    
     NSLog(@"DEVICE TOKEN: %@", token);
-    if ([self.session.device.deviceToken isEqualToString:token])
+    if ([self.session.device.deviceToken isEqualToString:token]) // no need to update
         return;
+    
     
     self.session.device.deviceToken = token;
     [self.session.device updateDevice]; // send token info to backend
