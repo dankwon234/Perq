@@ -8,13 +8,23 @@
 
 #import "PQAppDelegate.h"
 #import "PQContainerViewController.h"
+#import "PQSession.h"
 
+@interface PQAppDelegate ()
+@property (strong, nonatomic) PQSession *session;
+@end
 
 @implementation PQAppDelegate
 @synthesize showStatusBar;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.session = [PQSession sharedSession]; // start the session
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+    
+
     self.showStatusBar = YES;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -25,6 +35,38 @@
 
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+
+-(void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    NSLog(@"application didRegisterForRemoteNotificationsWithDeviceToken: %@", deviceToken);
+    
+    if (!deviceToken)
+        return;
+    
+//    UALOG(@"APN device token: %@", deviceToken);
+//    [[UAPush shared] registerDeviceToken:deviceToken];
+    
+    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSLog(@"DEVICE TOKEN: %@", token);
+    if ([self.session.device.deviceToken isEqualToString:token])
+        return;
+    
+    self.session.device.deviceToken = token;
+    [self.session.device updateDevice]; // send token info to backend
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    for (id key in userInfo)
+        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
