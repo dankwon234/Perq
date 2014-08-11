@@ -9,9 +9,13 @@
 #import "PQContainerViewController.h"
 #import "PQPostsViewController.h"
 #import "PQAppDelegate.h"
+#import "PQWelcomeViewController.h"
+
 
 @interface PQContainerViewController ()
 @property (strong, nonatomic) PQPostsViewController *postsVc;
+@property (strong, nonatomic) UINavigationController *navCtr;
+@property (strong, nonatomic) PQWelcomeViewController *welcomeVc;
 @end
 
 @implementation PQContainerViewController
@@ -20,6 +24,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(removeWelcomeViewController)
+                                                     name:kWelcomeViewDismissedNotification
+                                                   object:nil];
+
         
     }
     return self;
@@ -50,14 +59,16 @@
     
     self.postsVc = [[PQPostsViewController alloc] init];
     
-    UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:self.postsVc];
-    navCtr.navigationBar.barTintColor = kGreen;
-    navCtr.navigationBar.tintColor = [UIColor whiteColor];
-    [navCtr setNavigationBarHidden:YES animated:NO];
+    self.navCtr = [[UINavigationController alloc] initWithRootViewController:self.postsVc];
+    self.navCtr.navigationBar.barTintColor = kGreen;
+    self.navCtr.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navCtr setNavigationBarHidden:YES animated:NO];
     
-    [self addChildViewController:navCtr];
-    [navCtr willMoveToParentViewController:self];
-    [view addSubview:navCtr.view];
+    [self addChildViewController:self.navCtr];
+    [self.navCtr willMoveToParentViewController:self];
+    [view addSubview:self.navCtr.view];
+
+    
 
     
     self.view = view;
@@ -66,12 +77,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (!self.session.firstSession)
+        return;
+    
+    self.welcomeVc = [[PQWelcomeViewController alloc] init];
+    [self addChildViewController:self.welcomeVc];
+    [self.welcomeVc willMoveToParentViewController:self];
+    [self.view addSubview:self.welcomeVc.view];
+    
+    
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
+
+- (void)removeWelcomeViewController
+{
+    self.welcomeVc = nil;
 }
 
 - (void)didReceiveMemoryWarning
