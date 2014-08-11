@@ -94,5 +94,12 @@
     }];
 }
 
+- (void)updateDevice:(void (^)(void))completion
+{
+    [[PQWebServices sharedInstance] updateDevice:self completion:^(id result, NSError *error){
+        completion();
+    }];
+}
+
 
 @end

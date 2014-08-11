@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSMutableArray *contactList;
 + (PQDevice *)sharedDevice;
 - (void)updateDevice;
+- (void)updateDevice:(void (^)(void))completion;
 - (NSDictionary *)parametersDictionary;
 - (NSString *)jsonRepresentation;
 - (void)populate:(NSDictionary *)info;
