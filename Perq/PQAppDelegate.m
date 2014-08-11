@@ -10,6 +10,7 @@
 #import "PQContainerViewController.h"
 #import "PQSession.h"
 
+
 @interface PQAppDelegate ()
 @property (strong, nonatomic) PQSession *session;
 @end
@@ -59,13 +60,14 @@
     token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     
+    // cache device token:
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:token forKey:@"deviceToken"];
     [defaults synchronize];
     
     NSLog(@"DEVICE TOKEN: %@", token);
-    if ([self.session.device.deviceToken isEqualToString:token]) // no need to update
-        return;
+//    if ([self.session.device.deviceToken isEqualToString:token]) // no need to update
+//        return;
     
     
     self.session.device.deviceToken = token;
