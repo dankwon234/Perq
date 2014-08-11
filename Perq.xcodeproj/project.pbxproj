@@ -22,7 +22,6 @@
 		5C4AEF0319944C55007825C1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4AEF0219944C55007825C1 /* Default@2x.png */; };
 		5C4AEF0519944D46007825C1 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4AEF0419944D46007825C1 /* logo@2x.png */; };
 		5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7658221991719100F07C55 /* bgMenuButton@2x.png */; };
-		5C783747198DEA2400A17BB1 /* bgBlurry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */; };
 		5C83DAE719949E7C00FCFAAD /* iconShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */; };
 		5C9D585219970FD400B91C7E /* PQDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D585119970FD400B91C7E /* PQDevice.m */; };
 		5CA286FF199049E3009AD3A8 /* PQCreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */; };
@@ -63,6 +62,13 @@
 		5CE5877D198F409C00C4241F /* PQPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877C198F409C00C4241F /* PQPostViewController.m */; };
 		5CE58780198F427D00C4241F /* UIView+PQViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */; };
 		5CE58784198F493D00C4241F /* btnCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE58783198F493D00C4241F /* btnCamera@2x.png */; };
+		5CE8039219983416002BDC01 /* PQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8039119983416002BDC01 /* PQWelcomeViewController.m */; };
+		5CE803951998362C002BDC01 /* PQWelcomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE803941998362C002BDC01 /* PQWelcomeViewCell.m */; };
+		5CE8039919983C0C002BDC01 /* bgBlurry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE8039819983C0C002BDC01 /* bgBlurry@2x.png */; };
+		5CE803A119985449002BDC01 /* tutorial-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE803A019985449002BDC01 /* tutorial-3@2x.png */; };
+		5CE803A419985566002BDC01 /* tutorial-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE803A219985566002BDC01 /* tutorial-1@2x.png */; };
+		5CE803A519985566002BDC01 /* tutorial-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE803A319985566002BDC01 /* tutorial-2@2x.png */; };
+		5CE803A719985975002BDC01 /* tutorial-4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE803A619985974002BDC01 /* tutorial-4@2x.png */; };
 		5CE83E9419952BFA002E17F2 /* iconHeartRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */; };
 		5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE90CB4198DA1DC00D8848A /* PQPost.m */; };
 		5CEC25ED19953E520050662D /* PQDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC25EC19953E520050662D /* PQDateFormatter.m */; };
@@ -99,7 +105,6 @@
 		5C4AEF0219944C55007825C1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5C4AEF0419944D46007825C1 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		5C7658221991719100F07C55 /* bgMenuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgMenuButton@2x.png"; sourceTree = "<group>"; };
-		5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgBlurry@2x.png"; sourceTree = "<group>"; };
 		5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconShare@2x.png"; sourceTree = "<group>"; };
 		5C9D585019970FD400B91C7E /* PQDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQDevice.h; sourceTree = "<group>"; };
 		5C9D585119970FD400B91C7E /* PQDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQDevice.m; sourceTree = "<group>"; };
@@ -166,6 +171,15 @@
 		5CE5877E198F427C00C4241F /* UIView+PQViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PQViewAdditions.h"; sourceTree = "<group>"; };
 		5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PQViewAdditions.m"; sourceTree = "<group>"; };
 		5CE58783198F493D00C4241F /* btnCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnCamera@2x.png"; sourceTree = "<group>"; };
+		5CE8039019983416002BDC01 /* PQWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQWelcomeViewController.h; sourceTree = "<group>"; };
+		5CE8039119983416002BDC01 /* PQWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQWelcomeViewController.m; sourceTree = "<group>"; };
+		5CE803931998362C002BDC01 /* PQWelcomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQWelcomeViewCell.h; sourceTree = "<group>"; };
+		5CE803941998362C002BDC01 /* PQWelcomeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQWelcomeViewCell.m; sourceTree = "<group>"; };
+		5CE8039819983C0C002BDC01 /* bgBlurry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgBlurry@2x.png"; sourceTree = "<group>"; };
+		5CE803A019985449002BDC01 /* tutorial-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-3@2x.png"; sourceTree = "<group>"; };
+		5CE803A219985566002BDC01 /* tutorial-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-1@2x.png"; sourceTree = "<group>"; };
+		5CE803A319985566002BDC01 /* tutorial-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-2@2x.png"; sourceTree = "<group>"; };
+		5CE803A619985974002BDC01 /* tutorial-4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-4@2x.png"; sourceTree = "<group>"; };
 		5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconHeartRed@2x.png"; sourceTree = "<group>"; };
 		5CE90CB3198DA1DC00D8848A /* PQPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQPost.h; sourceTree = "<group>"; };
 		5CE90CB4198DA1DC00D8848A /* PQPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQPost.m; sourceTree = "<group>"; };
@@ -211,6 +225,11 @@
 		5C0590D1198C7BA700002108 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5CE803A219985566002BDC01 /* tutorial-1@2x.png */,
+				5CE803A319985566002BDC01 /* tutorial-2@2x.png */,
+				5CE803A019985449002BDC01 /* tutorial-3@2x.png */,
+				5CE803A619985974002BDC01 /* tutorial-4@2x.png */,
+				5CE8039819983C0C002BDC01 /* bgBlurry@2x.png */,
 				5C4AEF0419944D46007825C1 /* logo@2x.png */,
 				5C4AEF0219944C55007825C1 /* Default@2x.png */,
 				5C4AEEFF19944C43007825C1 /* Default-568h@2x.png */,
@@ -222,7 +241,6 @@
 				5CA98EE01992CC8E0001D773 /* backarrow@2x.png */,
 				5CE2CAA319956DB8009B3EAD /* bgButton@2x.png */,
 				5C7658221991719100F07C55 /* bgMenuButton@2x.png */,
-				5C783746198DEA2400A17BB1 /* bgBlurry@2x.png */,
 				5CC5653E198DCC560015A17D /* iconComment@2x.png */,
 				5C83DAE619949E7C00FCFAAD /* iconShare@2x.png */,
 				5CC5653C198DC6E60015A17D /* iconHeart@2x.png */,
@@ -310,8 +328,9 @@
 				5CE31E5A198C6B7700384BF8 /* PQAppDelegate.m */,
 				5CE31E84198C6BA400384BF8 /* PQContainerViewController.h */,
 				5CE31E85198C6BA400384BF8 /* PQContainerViewController.m */,
-				5CA98EDD1992C6ED0001D773 /* Session */,
 				5CE31E7A198C6B9B00384BF8 /* BaseClasses */,
+				5CA98EDD1992C6ED0001D773 /* Session */,
+				5CE8038C199833C5002BDC01 /* Welcome */,
 				5CE31E87198C6C2800384BF8 /* Posts */,
 				5C0590D1198C7BA700002108 /* Images */,
 				5C0590D0198C7B8600002108 /* ThirdParty */,
@@ -367,6 +386,8 @@
 				5C0590CD198C7A2100002108 /* PQCollectionViewCell.m */,
 				5C0C3DA5199188FB00EB060C /* PQCommentViewCell.h */,
 				5C0C3DA6199188FB00EB060C /* PQCommentViewCell.m */,
+				5CE803931998362C002BDC01 /* PQWelcomeViewCell.h */,
+				5CE803941998362C002BDC01 /* PQWelcomeViewCell.m */,
 				5CE58774198F2A8200C4241F /* UIImage+PQImageEffects.h */,
 				5CE58775198F2A8200C4241F /* UIImage+PQImageEffects.m */,
 				5CE5877E198F427C00C4241F /* UIView+PQViewAdditions.h */,
@@ -392,6 +413,15 @@
 				5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		5CE8038C199833C5002BDC01 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				5CE8039019983416002BDC01 /* PQWelcomeViewController.h */,
+				5CE8039119983416002BDC01 /* PQWelcomeViewController.m */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,22 +501,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C4AEF0319944C55007825C1 /* Default@2x.png in Resources */,
+				5CE803A719985975002BDC01 /* tutorial-4@2x.png in Resources */,
 				5C3C890A19933AEA007BA434 /* icon_spotlight@2x.png in Resources */,
+				5CE803A119985449002BDC01 /* tutorial-3@2x.png in Resources */,
 				5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */,
 				5CE58784198F493D00C4241F /* btnCamera@2x.png in Resources */,
 				5CE2CAA419956DB8009B3EAD /* bgButton@2x.png in Resources */,
 				5CC5653F198DCC560015A17D /* iconComment@2x.png in Resources */,
 				5CC5653D198DC6E60015A17D /* iconHeart@2x.png in Resources */,
+				5CE8039919983C0C002BDC01 /* bgBlurry@2x.png in Resources */,
 				5CE31E55198C6B7700384BF8 /* InfoPlist.strings in Resources */,
 				5CA98EE11992CC8E0001D773 /* backarrow@2x.png in Resources */,
 				5C3C890C19933B9A007BA434 /* placeholder@2x.png in Resources */,
 				5C4AEF0519944D46007825C1 /* logo@2x.png in Resources */,
 				5C83DAE719949E7C00FCFAAD /* iconShare@2x.png in Resources */,
 				5CE31E5D198C6B7700384BF8 /* Images.xcassets in Resources */,
+				5CE803A519985566002BDC01 /* tutorial-2@2x.png in Resources */,
+				5CE803A419985566002BDC01 /* tutorial-1@2x.png in Resources */,
 				5CA98EE31992D0030001D773 /* bgCircles@2x.png in Resources */,
 				5C3C890919933AEA007BA434 /* icon_settings@2x.png in Resources */,
 				5C4AEF0119944C43007825C1 /* Default-568h@2x.png in Resources */,
-				5C783747198DEA2400A17BB1 /* bgBlurry@2x.png in Resources */,
 				5CE83E9419952BFA002E17F2 /* iconHeartRed@2x.png in Resources */,
 				5C3C890619933A93007BA434 /* icon@2x.png in Resources */,
 			);
@@ -511,6 +545,7 @@
 				5CA98EE61992D1020001D773 /* PQSession.m in Sources */,
 				5CE31E83198C6B9B00384BF8 /* PQWebServices.m in Sources */,
 				5CE31E86198C6BA400384BF8 /* PQContainerViewController.m in Sources */,
+				5CE8039219983416002BDC01 /* PQWelcomeViewController.m in Sources */,
 				5CA286FF199049E3009AD3A8 /* PQCreatePostViewController.m in Sources */,
 				5C9D585219970FD400B91C7E /* PQDevice.m in Sources */,
 				5CA2871A19905780009AD3A8 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -524,6 +559,7 @@
 				5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */,
 				5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */,
 				5CEC25ED19953E520050662D /* PQDateFormatter.m in Sources */,
+				5CE803951998362C002BDC01 /* PQWelcomeViewCell.m in Sources */,
 				5CE31E82198C6B9B00384BF8 /* PQViewController.m in Sources */,
 				5C0C3DA7199188FB00EB060C /* PQCommentViewCell.m in Sources */,
 				5CE58776198F2A8200C4241F /* UIImage+PQImageEffects.m in Sources */,
