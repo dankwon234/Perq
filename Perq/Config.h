@@ -12,6 +12,8 @@
 
 #define kPostCellDimension 130.0f
 
+#define kWelcomeViewDismissedNotification @"WelcomeViewDismissedNotification"
+
 // Colors:
 #define kRed [UIColor colorWithRed:192.0f/255.0f green:35.0f/255.0f blue:59.0f/255.0f alpha:1.0f]
 #define kGreen [UIColor colorWithRed:62.0f/255.0f green:115.0f/255.0f blue:132.0f/255.0f alpha:1.0f]
