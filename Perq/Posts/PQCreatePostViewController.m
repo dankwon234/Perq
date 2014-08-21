@@ -77,9 +77,9 @@ static NSString *placeholder = @"Enter a short caption here.";
     [view addSubview:self.captionTextView];
     
     y += dimen+10;
-    self.lblLocation = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, y, frame.size.width-10.0f, 20.0f)];
+    self.lblLocation = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, y, frame.size.width-40.0f, 20.0f)];
     self.lblLocation.backgroundColor = self.captionTextView.backgroundColor;
-    self.lblLocation.textAlignment = NSTextAlignmentRight;
+    self.lblLocation.textAlignment = NSTextAlignmentLeft;
     self.lblLocation.textColor = [UIColor lightGrayColor];
     self.lblLocation.font = [UIFont systemFontOfSize:12];
     self.lblLocation.text = [NSString stringWithFormat:@"%@, %@", self.post.city, [self.post.state uppercaseString]];
