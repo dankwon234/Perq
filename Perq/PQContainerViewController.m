@@ -55,7 +55,7 @@
 - (void)loadView
 {
     UIView *view = [self baseView:NO];
-    view.backgroundColor = [UIColor redColor];
+    view.backgroundColor = kGreen;
     
     self.postsVc = [[PQPostsViewController alloc] init];
     
