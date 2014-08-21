@@ -182,9 +182,7 @@ static NSString *cellIdentifier = @"welcomeCellIdentifier";
     
     if (row==0){
         cell.btnSignup.alpha = 0.0f;
-        cell.phoneNumberField.alpha = 0.0f;
         cell.lblDescription.alpha = 1.0f;
-        cell.phoneNumberField.delegate = nil;
         cell.contentImage.image = [UIImage imageNamed:@"tutorial-1.png"];
         cell.lblCaption.text = @"Local";
         cell.lblDescription.text = @"On Perc, see pictures posted by people nearby. All content is posted anonymously.";
@@ -192,9 +190,7 @@ static NSString *cellIdentifier = @"welcomeCellIdentifier";
     
     if (row==1){
         cell.btnSignup.alpha = 0.0f;
-        cell.phoneNumberField.alpha = 0.0f;
         cell.lblDescription.alpha = 1.0f;
-        cell.phoneNumberField.delegate = nil;
         cell.contentImage.image = [UIImage imageNamed:@"tutorial-2.png"];
         cell.lblCaption.text = @"Comments";
         cell.lblDescription.text = @"Comment, like and share posts on your social networks.";
@@ -202,24 +198,19 @@ static NSString *cellIdentifier = @"welcomeCellIdentifier";
 
     if (row==2){
         cell.btnSignup.alpha = 0.0f;
-        cell.phoneNumberField.alpha = 0.0f;
         cell.lblDescription.alpha = 1.0f;
-        cell.phoneNumberField.delegate = nil;
         cell.contentImage.image = [UIImage imageNamed:@"tutorial-3.png"];
         cell.lblCaption.text = @"Guess Who?";
         cell.lblDescription.text = @"Earn points by guessing which one of your friends posted certain pictures.";
     }
 
     if (row==3){
-        cell.phoneNumberField.alpha = 1.0f;
-        cell.phoneNumberField.delegate = self;
         cell.btnSignup.alpha = 1.0f;
         cell.lblDescription.alpha = 0.0f;
         
-        self.phoneNumberField = cell.phoneNumberField;
         [cell.btnSignup addTarget:self action:@selector(signUp:) forControlEvents:UIControlEventTouchUpInside];
         cell.contentImage.image = [UIImage imageNamed:@"tutorial-4.png"];
-        cell.lblCaption.text = @"We promise to never share your number or reveal your identity.";
+        cell.lblCaption.text = @"We promise to never share your info or reveal your identity.";
         cell.lblDescription.text = @"";
     }
 

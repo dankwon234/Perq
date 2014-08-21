@@ -15,7 +15,6 @@
 
 @implementation PQWelcomeViewCell
 @synthesize contentImage;
-@synthesize phoneNumberField;
 @synthesize btnSignup;
 @synthesize lblCaption;
 @synthesize lblDescription;
@@ -71,11 +70,6 @@
         [self.btnSignup setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.contentView addSubview:self.btnSignup];
 
-        self.phoneNumberField = [[UITextField alloc] initWithFrame:CGRectMake(2*padding, frame.size.height-60.0f-3*padding, frame.size.width-4*padding, height)];
-        self.phoneNumberField.backgroundColor = [UIColor whiteColor];
-        self.phoneNumberField.placeholder = @"Phone (optional)";
-        self.phoneNumberField.font = [UIFont fontWithName:@"Verdana" size:14.0f];
-        [self.contentView addSubview:self.phoneNumberField];
         
     }
     return self;

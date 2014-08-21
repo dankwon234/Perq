@@ -11,7 +11,6 @@
 @interface PQWelcomeViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView *contentImage;
-@property (strong, nonatomic) UITextField *phoneNumberField;
 @property (strong, nonatomic) UIButton *btnSignup;
 @property (strong, nonatomic) UILabel *lblCaption;
 @property (strong, nonatomic) UILabel *lblDescription;
