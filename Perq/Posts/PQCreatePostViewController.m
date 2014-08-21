@@ -24,23 +24,7 @@ static NSString *placeholder = @"Enter a short caption here.";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        CGFloat width = 200.0f;
-        CGFloat height = 46.0f;
-        UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
-        titleView.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight);
-        titleView.backgroundColor = [UIColor clearColor];
-        UIImage *imgLogo = [UIImage imageNamed:@"logo.png"];
-        UIImageView *logo = [[UIImageView alloc] initWithImage:imgLogo];
-        static double scale = 0.7f;
-        CGRect frame = logo.frame;
-        frame.size.width = scale*imgLogo.size.width;
-        frame.size.height = scale*imgLogo.size.height;
-        logo.frame = frame;
-        logo.center = CGPointMake(0.45f*width, 24.0f);
-        
-        [titleView addSubview:logo];
-        
-        self.navigationItem.titleView = titleView;
+        [self addNavigationTitleView];
 
         self.post = [[PQPost alloc] init];
         self.post.deviceHash = self.session.deviceHash;
