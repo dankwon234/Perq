@@ -24,4 +24,5 @@
 - (UIView *)baseView:(BOOL)navCtr;
 - (void)showAlertWithtTitle:(NSString *)title message:(NSString *)msg;
 - (void)showAlertWithOptions:(NSString *)title message:(NSString *)msg;
+- (void)addNavigationTitleView;
 @end
