@@ -58,6 +58,8 @@
 		5CE31E82198C6B9B00384BF8 /* PQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE31E7E198C6B9B00384BF8 /* PQViewController.m */; };
 		5CE31E83198C6B9B00384BF8 /* PQWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE31E80198C6B9B00384BF8 /* PQWebServices.m */; };
 		5CE31E86198C6BA400384BF8 /* PQContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE31E85198C6BA400384BF8 /* PQContainerViewController.m */; };
+		5CE467E319A592D8005038F7 /* PQAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE467E219A592D8005038F7 /* PQAboutViewController.m */; };
+		5CE467E519A59BE6005038F7 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5CE467E419A59BE6005038F7 /* about.txt */; };
 		5CE58776198F2A8200C4241F /* UIImage+PQImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE58775198F2A8200C4241F /* UIImage+PQImageEffects.m */; };
 		5CE5877D198F409C00C4241F /* PQPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877C198F409C00C4241F /* PQPostViewController.m */; };
 		5CE58780198F427D00C4241F /* UIView+PQViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */; };
@@ -164,6 +166,9 @@
 		5CE31E80198C6B9B00384BF8 /* PQWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQWebServices.m; sourceTree = "<group>"; };
 		5CE31E84198C6BA400384BF8 /* PQContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQContainerViewController.h; sourceTree = "<group>"; };
 		5CE31E85198C6BA400384BF8 /* PQContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQContainerViewController.m; sourceTree = "<group>"; };
+		5CE467E119A592D8005038F7 /* PQAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQAboutViewController.h; sourceTree = "<group>"; };
+		5CE467E219A592D8005038F7 /* PQAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQAboutViewController.m; sourceTree = "<group>"; };
+		5CE467E419A59BE6005038F7 /* about.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		5CE58774198F2A8200C4241F /* UIImage+PQImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PQImageEffects.h"; sourceTree = "<group>"; };
 		5CE58775198F2A8200C4241F /* UIImage+PQImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PQImageEffects.m"; sourceTree = "<group>"; };
 		5CE5877B198F409C00C4241F /* PQPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQPostViewController.h; sourceTree = "<group>"; };
@@ -332,6 +337,7 @@
 				5CA98EDD1992C6ED0001D773 /* Session */,
 				5CE8038C199833C5002BDC01 /* Welcome */,
 				5CE31E87198C6C2800384BF8 /* Posts */,
+				5CE467E019A5929B005038F7 /* About */,
 				5C0590D1198C7BA700002108 /* Images */,
 				5C0590D0198C7B8600002108 /* ThirdParty */,
 				5CE31E5C198C6B7700384BF8 /* Images.xcassets */,
@@ -413,6 +419,16 @@
 				5CA286FE199049E3009AD3A8 /* PQCreatePostViewController.m */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		5CE467E019A5929B005038F7 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				5CE467E119A592D8005038F7 /* PQAboutViewController.h */,
+				5CE467E219A592D8005038F7 /* PQAboutViewController.m */,
+				5CE467E419A59BE6005038F7 /* about.txt */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		5CE8038C199833C5002BDC01 /* Welcome */ = {
@@ -502,6 +518,7 @@
 			files = (
 				5C4AEF0319944C55007825C1 /* Default@2x.png in Resources */,
 				5CE803A719985975002BDC01 /* tutorial-4@2x.png in Resources */,
+				5CE467E519A59BE6005038F7 /* about.txt in Resources */,
 				5C3C890A19933AEA007BA434 /* icon_spotlight@2x.png in Resources */,
 				5CE803A119985449002BDC01 /* tutorial-3@2x.png in Resources */,
 				5C7658231991719100F07C55 /* bgMenuButton@2x.png in Resources */,
@@ -554,6 +571,7 @@
 				5CA2871819905780009AD3A8 /* AFImageRequestOperation.m in Sources */,
 				5CA2871C19905780009AD3A8 /* AFURLConnectionOperation.m in Sources */,
 				5CE31E57198C6B7700384BF8 /* main.m in Sources */,
+				5CE467E319A592D8005038F7 /* PQAboutViewController.m in Sources */,
 				5C04B26C1996DE57005CEC81 /* PQSocialAccountsManager.m in Sources */,
 				5CA98EDC1992A8B80001D773 /* PQComment.m in Sources */,
 				5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */,
