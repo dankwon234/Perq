@@ -23,7 +23,7 @@
 #define kFacebookAPI @"https://graph.facebook.com/v2.1/"
 #define kFacebookAppID @"634876436619394"
 #define kFacebookAppSecret @"08b33bfae94013f2c72b68d8c2b618d6"
-#define kFacebookPermissions @[@"email", @"user_likes"]
+#define kFacebookPermissions @[@"email", @"user_likes", @"user_friends"]
 
 
 #endif
