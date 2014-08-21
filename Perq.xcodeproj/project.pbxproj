@@ -13,6 +13,7 @@
 		5C0590C8198C735400002108 /* PQPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590C7198C735400002108 /* PQPostsViewController.m */; };
 		5C0590CB198C753100002108 /* PQCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590CA198C753100002108 /* PQCollectionViewFlowLayout.m */; };
 		5C0590CE198C7A2100002108 /* PQCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590CD198C7A2100002108 /* PQCollectionViewCell.m */; };
+		5C099E2619A5B49D003102E1 /* PQSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C099E2519A5B49D003102E1 /* PQSelectNetworkViewController.m */; };
 		5C0C3DA7199188FB00EB060C /* PQCommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C3DA6199188FB00EB060C /* PQCommentViewCell.m */; };
 		5C3C890619933A93007BA434 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C890519933A93007BA434 /* icon@2x.png */; };
 		5C3C890919933AEA007BA434 /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C890719933AEA007BA434 /* icon_settings@2x.png */; };
@@ -97,6 +98,8 @@
 		5C0590CA198C753100002108 /* PQCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		5C0590CC198C7A2100002108 /* PQCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCollectionViewCell.h; sourceTree = "<group>"; };
 		5C0590CD198C7A2100002108 /* PQCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCollectionViewCell.m; sourceTree = "<group>"; };
+		5C099E2419A5B49D003102E1 /* PQSelectNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQSelectNetworkViewController.h; sourceTree = "<group>"; };
+		5C099E2519A5B49D003102E1 /* PQSelectNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQSelectNetworkViewController.m; sourceTree = "<group>"; };
 		5C0C3DA5199188FB00EB060C /* PQCommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCommentViewCell.h; sourceTree = "<group>"; };
 		5C0C3DA6199188FB00EB060C /* PQCommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCommentViewCell.m; sourceTree = "<group>"; };
 		5C3C890519933A93007BA434 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -255,6 +258,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		5C099E2319A5B470003102E1 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				5C099E2419A5B49D003102E1 /* PQSelectNetworkViewController.h */,
+				5C099E2519A5B49D003102E1 /* PQSelectNetworkViewController.m */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 		5CA2870219905780009AD3A8 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +350,7 @@
 				5CE8038C199833C5002BDC01 /* Welcome */,
 				5CE31E87198C6C2800384BF8 /* Posts */,
 				5CE467E019A5929B005038F7 /* About */,
+				5C099E2319A5B470003102E1 /* Friends */,
 				5C0590D1198C7BA700002108 /* Images */,
 				5C0590D0198C7B8600002108 /* ThirdParty */,
 				5CE31E5C198C6B7700384BF8 /* Images.xcassets */,
@@ -590,6 +603,7 @@
 				5CE31E81198C6B9B00384BF8 /* PQLoadingIndicator.m in Sources */,
 				5CA2871B19905780009AD3A8 /* AFPropertyListRequestOperation.m in Sources */,
 				5C0590C8198C735400002108 /* PQPostsViewController.m in Sources */,
+				5C099E2619A5B49D003102E1 /* PQSelectNetworkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
