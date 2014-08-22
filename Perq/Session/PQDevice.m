@@ -23,6 +23,8 @@
         self.deviceToken = @"none";
         self.deviceHash = @"none";
         self.phoneNumber = @"none";
+        
+        [self populateFromCache];
     }
     return self;
 }
@@ -41,6 +43,33 @@
     return shared;
 }
 
+- (void)cacheDevice
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *jsonString = [self jsonRepresentation];
+    [defaults setObject:jsonString forKey:@"device"];
+    [defaults synchronize];
+}
+
+- (void)populateFromCache
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *json = [defaults objectForKey:@"device"];
+    if (!json)
+        return;
+    
+    NSError *error = nil;
+    NSDictionary *deviceInfo = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
+    NSLog(@"CACHED DEVICE: %@", [deviceInfo description]);
+    
+    if (error)
+        return;
+    
+    [self populate:deviceInfo];
+}
+
+
+
 - (void)populate:(NSDictionary *)info
 {
     for (NSString *key in info.allKeys) {
@@ -56,6 +85,9 @@
         if ([key isEqualToString:@"contactList"])
             self.contactList = [NSMutableArray arrayWithArray:[info objectForKey:key]];
     }
+    
+    [self cacheDevice];
+
 }
 
 
@@ -93,6 +125,15 @@
         
     }];
 }
+
+
+- (void)storeDeviceToken
+{
+    [[PQWebServices sharedInstance] updateDevice:self completion:^(id result, NSError *error){
+        
+    }];
+}
+
 
 - (void)updateDevice:(void (^)(void))completion
 {

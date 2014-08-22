@@ -21,4 +21,7 @@
 - (NSString *)jsonRepresentation;
 - (void)populate:(NSDictionary *)info;
 - (void)registerDevice;
+- (void)storeDeviceToken;
+- (void)cacheDevice;
+
 @end
