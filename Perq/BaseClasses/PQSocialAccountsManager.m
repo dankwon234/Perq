@@ -179,7 +179,7 @@
 - (void)requestFacebookAccountInfo:(PQSocialAccountsMgrCompletionBlock)completionBlock
 {
     if (!self.facebookAccount) { // no facebook acccount linked
-        NSError *error = [NSError errorWithDomain:@"com.flashzone.app" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No Facebook account linked. Please allow Facebook access."}];
+        NSError *error = [NSError errorWithDomain:@"com.perq.app" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No Facebook account linked. Please allow Facebook access."}];
         completionBlock(nil, error);
         return;
     }
@@ -205,9 +205,39 @@
             NSLog(@"error from get - - %@", [error localizedDescription]); //attempt to revalidate credentials
             completionBlock(nil, error);
         }
-        
     }];
+}
+
+- (void)requestFacebookUserFriends:(PQSocialAccountsMgrCompletionBlock)completionBlock
+{
+    if (!self.facebookAccount) { // no facebook acccount linked
+        NSError *error = [NSError errorWithDomain:@"com.perq.app" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No Facebook account linked. Please allow Facebook access."}];
+        completionBlock(nil, error);
+        return;
+    }
     
+    NSString *url = [kFacebookAPI stringByAppendingString:@"me/friends"]; // https://graph.facebook.com/me/friends
+    NSURL *requestURL = [NSURL URLWithString:url];
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook requestMethod:SLRequestMethodGET URL:requestURL parameters:nil];
+    request.account = self.facebookAccount;
+    
+    [request performRequestWithHandler:^(NSData *data, NSHTTPURLResponse *response, NSError *error) {
+        if (!error) {
+            NSDictionary *facebookAccountInfo = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            NSLog(@"FACEBOOK USER FRIENDS: %@", [facebookAccountInfo description]);
+            
+            if (error){ // JSON parsing error
+                completionBlock(nil, error);
+            }
+            else {
+                completionBlock(facebookAccountInfo, nil);
+            }
+        }
+        else { // handle error:
+            NSLog(@"error from get - - %@", [error localizedDescription]); //attempt to revalidate credentials
+            completionBlock(nil, error);
+        }
+    }];
 }
 
 

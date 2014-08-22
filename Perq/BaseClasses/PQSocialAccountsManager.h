@@ -24,6 +24,7 @@ typedef void (^PQSocialAccountsMgrCompletionBlock)(id result, NSError *error);
 // Facebook
 - (void)requestFacebookAccess:(NSArray *)permissions completionBlock:(PQSocialAccountsMgrCompletionBlock)completionBlock;
 - (void)requestFacebookAccountInfo:(PQSocialAccountsMgrCompletionBlock)completionBlock;
+- (void)requestFacebookUserFriends:(PQSocialAccountsMgrCompletionBlock)completionBlock;
 
 // Twitter
 - (void)requestTwitterAccess:(PQSocialAccountsMgrCompletionBlock)completionBlock;
