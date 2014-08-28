@@ -453,6 +453,8 @@ static NSString *cellIdentifier = @"cellIdentifier";
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self layoutPostsCollectionView];
+        if (self.posts.count==0)
+            [self showAlertWithtTitle:@"No Percs!" message:@"To post the first Perc, tap the camera icon on the lower left!"];
         
     });
 }
