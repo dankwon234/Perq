@@ -34,6 +34,7 @@ typedef void (^PQWebServiceRequestCompletionBlock)(id result, NSError *error);
 - (void)fetchPostsFromLocation:(NSDictionary *)location completion:(PQWebServiceRequestCompletionBlock)completionBlock;
 - (void)createPost:(PQPost *)post completion:(PQWebServiceRequestCompletionBlock)completionBlock;
 - (void)likePost:(PQPost *)post withDevice:(NSString *)deviceHash completion:(PQWebServiceRequestCompletionBlock)completionBlock;
+- (void)guessPost:(PQPost *)post withDevice:(NSString *)deviceHash completion:(PQWebServiceRequestCompletionBlock)completionBlock;
 - (void)unlikePost:(PQPost *)post withDevice:(NSString *)deviceHash completion:(PQWebServiceRequestCompletionBlock)completionBlock;
 
 
