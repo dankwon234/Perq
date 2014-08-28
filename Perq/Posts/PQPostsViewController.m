@@ -102,7 +102,10 @@ static NSString *cellIdentifier = @"cellIdentifier";
     
     
     UIImage *btnMenuButton = [UIImage imageNamed:@"bgMenuButton.png"];
-    NSArray *menuOptions = @[@"Featured", @"Nearby", @"My Percs", @"About", @"Friends"];
+    
+    BOOL hasFriends = (self.session.device.contactList.count==0 || [self.session.device.contactList containsObject:@"none"]==YES);
+    
+    NSArray *menuOptions = (hasFriends) ? @[@"Featured", @"Nearby", @"My Percs", @"About", @"Friends"] : @[@"Featured", @"Nearby", @"My Percs", @"About"];
     for (int i=0; i<menuOptions.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.tag = 1000+i;
