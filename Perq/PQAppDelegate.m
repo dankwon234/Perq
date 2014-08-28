@@ -52,9 +52,6 @@
     if (!deviceToken)
         return;
     
-//    UALOG(@"APN device token: %@", deviceToken);
-//    [[UAPush shared] registerDeviceToken:deviceToken];
-    
     NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
     token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
