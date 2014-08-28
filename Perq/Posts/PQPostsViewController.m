@@ -12,6 +12,8 @@
 #import "PQCollectionViewCell.h"
 #import "PQPostViewController.h"
 #import "PQCreatePostViewController.h"
+#import "PQAboutViewController.h"
+#import "PQContactListViewController.h"
 #import "PQPost.h"
 
 
@@ -100,7 +102,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     
     
     UIImage *btnMenuButton = [UIImage imageNamed:@"bgMenuButton.png"];
-    NSArray *menuOptions = @[@"Featured", @"Nearby", @"My Percs", @"About"];
+    NSArray *menuOptions = @[@"Featured", @"Nearby", @"My Percs", @"About", @"Friends"];
     for (int i=0; i<menuOptions.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.tag = 1000+i;
@@ -110,7 +112,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
         btn.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 30);
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         btn.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-        btn.frame = CGRectMake(-btnMenuButton.size.width, 30.0f+i*(btnMenuButton.size.height+12.0f), btnMenuButton.size.width, btnMenuButton.size.height);
+        btn.frame = CGRectMake(-btnMenuButton.size.width, 20.0f+i*(btnMenuButton.size.height+12.0f), btnMenuButton.size.width, btnMenuButton.size.height);
         [btn setBackgroundImage:btnMenuButton forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(menuOptionSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self.menuButtons addObject:btn];
@@ -122,7 +124,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     self.btnCamera = [UIButton buttonWithType:UIButtonTypeCustom];
     self.btnCamera.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.btnCamera setBackgroundImage:imgCamera forState:UIControlStateNormal];
-    self.btnCamera.frame = CGRectMake(60.0, frame.size.height-imgCamera.size.height-110.0f, imgCamera.size.width, imgCamera.size.height);
+    self.btnCamera.frame = CGRectMake(60.0, frame.size.height-0.8f*imgCamera.size.height-100.0f, 0.8f*imgCamera.size.width, 0.8f*imgCamera.size.height);
     [self.btnCamera addTarget:self action:@selector(postPicture:) forControlEvents:UIControlEventTouchUpInside];
     [self.btnCamera setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [view addSubview:self.btnCamera];
@@ -281,6 +283,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 
 - (void)menuOptionSelected:(UIButton *)btn
 {
+    int oldIndex = self.selectedMenuIndex;
     int tag = btn.tag-1000;
     if (tag==self.selectedMenuIndex)
         return;
@@ -314,13 +317,23 @@ static NSString *cellIdentifier = @"cellIdentifier";
     }
     
     if (self.selectedMenuIndex==3){ // About
+        self.selectedMenuIndex = oldIndex;
+        PQAboutViewController *aboutVc = [[PQAboutViewController alloc] init];
+        [self.navigationController pushViewController:aboutVc animated:YES];
+        return;
+    }
 
-        
+    if (self.selectedMenuIndex==4){ // Friends
+        self.selectedMenuIndex = oldIndex;
+        PQContactListViewController *friendsVc = [[PQContactListViewController alloc] init];
+        [self.navigationController pushViewController:friendsVc animated:YES];
+        return;
     }
     
-    [self showMenuButtons];
     
+    [self showMenuButtons];
 }
+
 
 - (void)destroyPostsCollectionView
 {
@@ -367,6 +380,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 {
     [self destroyPostsCollectionView];
     
+    [self.loadingIndicator startLoading];
     [[PQWebServices sharedInstance] fetchPosts:^(id result, NSError *error){
         [self.loadingIndicator stopLoading];
         if (error){
@@ -491,6 +505,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 
 - (void)showMenuButtons
 {
+    NSLog(@"SHOW MENU BUTTONS");
     for (int i=self.selectedMenuIndex; i<self.selectedMenuIndex+self.menuButtons.count; i++) {
         int index = i%self.menuButtons.count;
         UIButton *btn = self.menuButtons[index];
