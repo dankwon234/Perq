@@ -14,6 +14,7 @@
 #import "PQWebServices.h"
 #import "PQSession.h"
 #import "PQSocialAccountsManager.h"
+#import "SignalCheck.h"
 
 
 @interface PQViewController : UIViewController
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) PQLoadingIndicator *loadingIndicator;
 @property (strong, nonatomic) PQSession *session;
 @property (strong, nonatomic) PQSocialAccountsManager *socialAccountsMgr;
+@property (strong, nonatomic) SignalCheck *signalCheck;
 - (UIView *)baseView:(BOOL)navCtr;
 - (void)showAlertWithtTitle:(NSString *)title message:(NSString *)msg;
 - (void)showAlertWithOptions:(NSString *)title message:(NSString *)msg;

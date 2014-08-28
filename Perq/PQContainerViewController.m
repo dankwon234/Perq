@@ -78,6 +78,9 @@
 {
     [super viewDidLoad];
     
+    if ([self.signalCheck checkSignal]==NO)
+        [self showAlertWithtTitle:@"No Connection" message:@"Please find an internet connection."];
+
     if (!self.session.firstSession)
         return;
     
@@ -85,6 +88,7 @@
     [self addChildViewController:self.welcomeVc];
     [self.welcomeVc willMoveToParentViewController:self];
     [self.view addSubview:self.welcomeVc.view];
+    
     
     
 }

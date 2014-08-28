@@ -16,6 +16,7 @@
 @synthesize session;
 @synthesize socialAccountsMgr;
 @synthesize loadingIndicator;
+@synthesize signalCheck;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,6 +25,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.session = [PQSession sharedSession];
         self.socialAccountsMgr = [PQSocialAccountsManager sharedAccountManager];
+        self.signalCheck = [SignalCheck signalWithDelegate:self];
 
     }
     return self;
