@@ -60,6 +60,8 @@
 		5CE31E86198C6BA400384BF8 /* PQContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE31E85198C6BA400384BF8 /* PQContainerViewController.m */; };
 		5CE467E319A592D8005038F7 /* PQAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE467E219A592D8005038F7 /* PQAboutViewController.m */; };
 		5CE467E519A59BE6005038F7 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5CE467E419A59BE6005038F7 /* about.txt */; };
+		5CE5194B19AEF94B00781E2E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5194819AEF94B00781E2E /* Reachability.m */; };
+		5CE5194C19AEF94B00781E2E /* SignalCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5194A19AEF94B00781E2E /* SignalCheck.m */; };
 		5CE58776198F2A8200C4241F /* UIImage+PQImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE58775198F2A8200C4241F /* UIImage+PQImageEffects.m */; };
 		5CE5877D198F409C00C4241F /* PQPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877C198F409C00C4241F /* PQPostViewController.m */; };
 		5CE58780198F427D00C4241F /* UIView+PQViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5877F198F427C00C4241F /* UIView+PQViewAdditions.m */; };
@@ -172,6 +174,10 @@
 		5CE467E119A592D8005038F7 /* PQAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQAboutViewController.h; sourceTree = "<group>"; };
 		5CE467E219A592D8005038F7 /* PQAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQAboutViewController.m; sourceTree = "<group>"; };
 		5CE467E419A59BE6005038F7 /* about.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
+		5CE5194719AEF94B00781E2E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5CE5194819AEF94B00781E2E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5CE5194919AEF94B00781E2E /* SignalCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalCheck.h; sourceTree = "<group>"; };
+		5CE5194A19AEF94B00781E2E /* SignalCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignalCheck.m; sourceTree = "<group>"; };
 		5CE58774198F2A8200C4241F /* UIImage+PQImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PQImageEffects.h"; sourceTree = "<group>"; };
 		5CE58775198F2A8200C4241F /* UIImage+PQImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PQImageEffects.m"; sourceTree = "<group>"; };
 		5CE5877B198F409C00C4241F /* PQPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQPostViewController.h; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 		5C0590D0198C7B8600002108 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				5CE5194619AEF94B00781E2E /* Reachability */,
 				5CA2870219905780009AD3A8 /* AFNetworking */,
 			);
 			path = ThirdParty;
@@ -452,6 +459,17 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		5CE5194619AEF94B00781E2E /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5194719AEF94B00781E2E /* Reachability.h */,
+				5CE5194819AEF94B00781E2E /* Reachability.m */,
+				5CE5194919AEF94B00781E2E /* SignalCheck.h */,
+				5CE5194A19AEF94B00781E2E /* SignalCheck.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		5CE8038C199833C5002BDC01 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +613,8 @@
 				5CE467E319A592D8005038F7 /* PQAboutViewController.m in Sources */,
 				5C04B26C1996DE57005CEC81 /* PQSocialAccountsManager.m in Sources */,
 				5CA98EDC1992A8B80001D773 /* PQComment.m in Sources */,
+				5CE5194C19AEF94B00781E2E /* SignalCheck.m in Sources */,
+				5CE5194B19AEF94B00781E2E /* Reachability.m in Sources */,
 				5CF2ED0919A6CFAA00300103 /* PQContactListViewController.m in Sources */,
 				5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */,
 				5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */,
