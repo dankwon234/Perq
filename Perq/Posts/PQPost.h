@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSMutableArray *likes;
 @property (strong, nonatomic) UIImage *imageData;
 @property (strong, nonatomic) NSMutableArray *comments;
+@property (strong, nonatomic) NSMutableArray *guessed; // list of device hashes that already guessed on this post
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 @property (nonatomic) int commentCount;

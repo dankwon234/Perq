@@ -31,6 +31,7 @@
 @synthesize formattedDate;
 @synthesize dateFormatter;
 @synthesize from;
+@synthesize guessed;
 
 #define kOneDay 24*60*60 // one day in seconds
 
@@ -40,6 +41,7 @@
     if (self){
         self.dateFormatter = [PQDateFormatter sharedDateFormatter];
         self.comments = [NSMutableArray array];
+        self.guessed = [NSMutableArray array];
         self.likes = [NSMutableArray array];
         self.imageData = nil;
         self.timestamp = nil;
@@ -106,6 +108,11 @@
         if ([key isEqualToString:@"commentCount"])
             self.commentCount = [[info objectForKey:key] intValue];
 
+        if ([key isEqualToString:@"guessed"]){
+            self.guessed = [NSMutableArray arrayWithArray:[info objectForKey:key]];
+        }
+        
+        
         if ([key isEqualToString:@"comments"]){
             NSArray *c = [info objectForKey:key];
             for (int i=0; i<c.count; i++) {
@@ -188,7 +195,7 @@
 
 - (NSDictionary *)parametersDictionary
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"from":self.from, @"deviceHash":self.deviceHash, @"caption":self.caption, @"image":self.image, @"city":self.city, @"state":self.state, @"zip":self.zip, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude]}];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"from":self.from, @"guessed":self.guessed, @"deviceHash":self.deviceHash, @"caption":self.caption, @"image":self.image, @"city":self.city, @"state":self.state, @"zip":self.zip, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude]}];
     
     return params;
 
