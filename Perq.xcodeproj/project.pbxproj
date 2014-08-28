@@ -13,7 +13,6 @@
 		5C0590C8198C735400002108 /* PQPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590C7198C735400002108 /* PQPostsViewController.m */; };
 		5C0590CB198C753100002108 /* PQCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590CA198C753100002108 /* PQCollectionViewFlowLayout.m */; };
 		5C0590CE198C7A2100002108 /* PQCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0590CD198C7A2100002108 /* PQCollectionViewCell.m */; };
-		5C099E2619A5B49D003102E1 /* PQSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C099E2519A5B49D003102E1 /* PQSelectNetworkViewController.m */; };
 		5C0C3DA7199188FB00EB060C /* PQCommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C3DA6199188FB00EB060C /* PQCommentViewCell.m */; };
 		5C3C890619933A93007BA434 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C890519933A93007BA434 /* icon@2x.png */; };
 		5C3C890919933AEA007BA434 /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C890719933AEA007BA434 /* icon_settings@2x.png */; };
@@ -75,6 +74,9 @@
 		5CE83E9419952BFA002E17F2 /* iconHeartRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE83E9319952BFA002E17F2 /* iconHeartRed@2x.png */; };
 		5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE90CB4198DA1DC00D8848A /* PQPost.m */; };
 		5CEC25ED19953E520050662D /* PQDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC25EC19953E520050662D /* PQDateFormatter.m */; };
+		5CF2ED0419A6B2CA00300103 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF2ED0319A6B2CA00300103 /* AddressBook.framework */; };
+		5CF2ED0619A6B2CE00300103 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF2ED0519A6B2CE00300103 /* AddressBookUI.framework */; };
+		5CF2ED0919A6CFAA00300103 /* PQContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2ED0819A6CFA900300103 /* PQContactListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,8 +100,6 @@
 		5C0590CA198C753100002108 /* PQCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		5C0590CC198C7A2100002108 /* PQCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCollectionViewCell.h; sourceTree = "<group>"; };
 		5C0590CD198C7A2100002108 /* PQCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCollectionViewCell.m; sourceTree = "<group>"; };
-		5C099E2419A5B49D003102E1 /* PQSelectNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQSelectNetworkViewController.h; sourceTree = "<group>"; };
-		5C099E2519A5B49D003102E1 /* PQSelectNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQSelectNetworkViewController.m; sourceTree = "<group>"; };
 		5C0C3DA5199188FB00EB060C /* PQCommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQCommentViewCell.h; sourceTree = "<group>"; };
 		5C0C3DA6199188FB00EB060C /* PQCommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQCommentViewCell.m; sourceTree = "<group>"; };
 		5C3C890519933A93007BA434 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -193,6 +193,10 @@
 		5CE90CB4198DA1DC00D8848A /* PQPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQPost.m; sourceTree = "<group>"; };
 		5CEC25EB19953E520050662D /* PQDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQDateFormatter.h; sourceTree = "<group>"; };
 		5CEC25EC19953E520050662D /* PQDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQDateFormatter.m; sourceTree = "<group>"; };
+		5CF2ED0319A6B2CA00300103 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		5CF2ED0519A6B2CE00300103 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		5CF2ED0719A6CFA900300103 /* PQContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQContactListViewController.h; sourceTree = "<group>"; };
+		5CF2ED0819A6CFA900300103 /* PQContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQContactListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF2ED0619A6B2CE00300103 /* AddressBookUI.framework in Frameworks */,
+				5CF2ED0419A6B2CA00300103 /* AddressBook.framework in Frameworks */,
 				5C04B2701996DEA0005CEC81 /* Social.framework in Frameworks */,
 				5C04B26E1996DE9A005CEC81 /* Accounts.framework in Frameworks */,
 				5CA2870119905177009AD3A8 /* CoreLocation.framework in Frameworks */,
@@ -261,8 +267,8 @@
 		5C099E2319A5B470003102E1 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
-				5C099E2419A5B49D003102E1 /* PQSelectNetworkViewController.h */,
-				5C099E2519A5B49D003102E1 /* PQSelectNetworkViewController.m */,
+				5CF2ED0719A6CFA900300103 /* PQContactListViewController.h */,
+				5CF2ED0819A6CFA900300103 /* PQContactListViewController.m */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -326,6 +332,8 @@
 		5CE31E49198C6B7600384BF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CF2ED0519A6B2CE00300103 /* AddressBookUI.framework */,
+				5CF2ED0319A6B2CA00300103 /* AddressBook.framework */,
 				5C04B26F1996DEA0005CEC81 /* Social.framework */,
 				5C04B26D1996DE9A005CEC81 /* Accounts.framework */,
 				5CA2870019905177009AD3A8 /* CoreLocation.framework */,
@@ -587,6 +595,7 @@
 				5CE467E319A592D8005038F7 /* PQAboutViewController.m in Sources */,
 				5C04B26C1996DE57005CEC81 /* PQSocialAccountsManager.m in Sources */,
 				5CA98EDC1992A8B80001D773 /* PQComment.m in Sources */,
+				5CF2ED0919A6CFAA00300103 /* PQContactListViewController.m in Sources */,
 				5CA2871619905780009AD3A8 /* AFHTTPClient.m in Sources */,
 				5CE90CB5198DA1DC00D8848A /* PQPost.m in Sources */,
 				5CEC25ED19953E520050662D /* PQDateFormatter.m in Sources */,
@@ -603,7 +612,6 @@
 				5CE31E81198C6B9B00384BF8 /* PQLoadingIndicator.m in Sources */,
 				5CA2871B19905780009AD3A8 /* AFPropertyListRequestOperation.m in Sources */,
 				5C0590C8198C735400002108 /* PQPostsViewController.m in Sources */,
-				5C099E2619A5B49D003102E1 /* PQSelectNetworkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,7 +682,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "679D980C-F9D4-4254-A0C6-8C8D971272D8";
+				PROVISIONING_PROFILE = "233A4A42-C045-443B-8C32-09C9E396AC70";
 				SDKROOT = iphoneos7.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -688,7 +696,7 @@
 				GCC_PREFIX_HEADER = "Perq/Perq-Prefix.pch";
 				INFOPLIST_FILE = "Perq/Perq-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "679D980C-F9D4-4254-A0C6-8C8D971272D8";
+				PROVISIONING_PROFILE = "233A4A42-C045-443B-8C32-09C9E396AC70";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;
