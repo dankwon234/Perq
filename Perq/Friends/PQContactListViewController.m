@@ -35,11 +35,11 @@
     CGRect frame = view.frame;
 
     
-    self.phoneNumberField = [[UITextField alloc] initWithFrame:CGRectMake(12.0f, frame.size.height-46.0f, frame.size.width-24.0f, 36.0f)];
+    self.phoneNumberField = [[UITextField alloc] initWithFrame:CGRectMake(12.0f, 20.0f, frame.size.width-24.0f, 36.0f)];
     self.phoneNumberField.backgroundColor = [UIColor redColor];
-//    self.phoneNumberField.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [view addSubview:self.phoneNumberField];
     
+    [view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)]];
     
     
     
@@ -67,6 +67,10 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
+- (void)dismissKeyboard:(UITapGestureRecognizer *)tap
+{
+    [self.phoneNumberField resignFirstResponder];
+}
 
 
 //search for beginning of first or last name, have search work for only prefixes
@@ -85,6 +89,7 @@
             }
             else if (granted) {
                 NSLog(@"Address book access granted");
+                self.session.device.contactList = [NSMutableArray array]; // clear out the old list.
                 NSArray *allContacts = (__bridge_transfer NSArray*)ABAddressBookCopyArrayOfAllPeople(addressBook);
                 for( int i=0; i<allContacts.count; i++) {
                     ABRecordRef contact = (__bridge ABRecordRef)allContacts[i];
@@ -150,7 +155,7 @@
                 
                 
                 [self.session.device.contactList sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-                NSLog(@"%@", [self.session.device.contactList description]);
+                NSLog(@"CONTACT LIST: %@", [self.session.device.contactList description]);
                 [self.session.device cacheDevice];
                 
                 
