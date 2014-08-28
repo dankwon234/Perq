@@ -14,6 +14,7 @@
 @property (copy, nonatomic) NSString *deviceToken;
 @property (copy, nonatomic) NSString *phoneNumber;
 @property (strong, nonatomic) NSMutableArray *contactList;
+@property (nonatomic) int points;
 + (PQDevice *)sharedDevice;
 - (void)updateDevice;
 - (void)updateDevice:(void (^)(void))completion;

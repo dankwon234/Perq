@@ -14,6 +14,7 @@
 @synthesize deviceToken;
 @synthesize phoneNumber;
 @synthesize contactList;
+@synthesize points;
 
 - (id)init
 {
@@ -23,6 +24,7 @@
         self.deviceToken = @"none";
         self.deviceHash = @"none";
         self.phoneNumber = @"none";
+        self.points = 0;
         
         [self populateFromCache];
     }
@@ -84,6 +86,10 @@
 
         if ([key isEqualToString:@"contactList"])
             self.contactList = [NSMutableArray arrayWithArray:[info objectForKey:key]];
+        
+        if ([key isEqualToString:@"points"])
+            self.points = [[info objectForKey:key] intValue];
+
     }
     
     [self cacheDevice];
@@ -93,7 +99,7 @@
 
 - (NSDictionary *)parametersDictionary
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"deviceHash":self.deviceHash, @"deviceToken":self.deviceToken, @"phoneNumber":self.phoneNumber, @"contactList":self.contactList}];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"deviceHash":self.deviceHash, @"deviceToken":self.deviceToken, @"phoneNumber":self.phoneNumber, @"contactList":self.contactList, @"points":[NSString stringWithFormat:@"%d", self.points]}];
     
     return params;
 }
