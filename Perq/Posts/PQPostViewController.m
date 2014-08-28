@@ -540,6 +540,11 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 //call to get address book, latency
 - (void)findRandomContacts
 {
+    if ([self.post.guessed containsObject:self.session.deviceHash]==YES){ // already guess, can't do again
+        [self showAlertWithtTitle:@"Sorry" message:@"You already guessed on this post."];
+        return;
+    }
+
     CFErrorRef error = NULL;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
     if (error) {
@@ -648,8 +653,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             actionsheet.frame = CGRectMake(0, 150, self.view.frame.size.width, 100);
             actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
             [actionsheet showInView:[UIApplication sharedApplication].keyWindow];
-
-            
             
         });
     });
@@ -671,6 +674,17 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             [self showAlertWithtTitle:@"Wrong!" message:[NSString stringWithFormat:@"%@ wouldn't post that!", contactInfo[@"firstName"]]];
         }
 
+
+        if ([self.post.guessed containsObject:self.session.deviceHash]==NO)
+            [self.post.guessed addObject:self.session.deviceHash];
+        
+        
+        [[PQWebServices sharedInstance] guessPost:self.post
+                                       withDevice:self.session.deviceHash
+                                       completion:^(id result, NSError *error){
+                                           
+                                       }];
+        
 
         self.guessing = NO;
         return;
