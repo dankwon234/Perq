@@ -9,7 +9,7 @@
 #import "PQCollectionViewCell.h"
 
 @interface PQCollectionViewCell ()
-@property (strong, nonatomic) UIView *border;
+
 @end
 
 #define kIconDimen 32.0f
@@ -20,6 +20,7 @@
 @synthesize image;
 @synthesize btnHeart;
 @synthesize btnComment;
+@synthesize border;
 
 
 - (id)initWithFrame:(CGRect)frame

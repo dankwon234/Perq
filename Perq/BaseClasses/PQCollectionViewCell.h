@@ -11,6 +11,7 @@
 
 @interface PQCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) UIView *border;
 @property (strong, nonatomic) UIImageView *image;
 @property (strong, nonatomic) UIButton *btnComment;
 @property (strong, nonatomic) UIButton *btnHeart;
