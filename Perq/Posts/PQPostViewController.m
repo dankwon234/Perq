@@ -247,7 +247,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         btnGuess.titleLabel.font = verdana;
         [btnGuess setTitle:@"?" forState:UIControlStateNormal];
         [btnGuess setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [btnGuess addTarget:self action:@selector(guess:) forControlEvents:UIControlEventTouchUpInside];
+        [btnGuess addTarget:self action:@selector(findRandomContacts) forControlEvents:UIControlEventTouchUpInside];
         [self.fullImageView addSubview:btnGuess];
     }
     
@@ -535,18 +535,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 
 }
 
-- (void)guess:(UIButton *)btn
-{
-    NSLog(@"GUESS:");
-    [self findRandomContacts];
-    
-    
-//    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Guess" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", nil];
-//    actionsheet.frame = CGRectMake(0, 150, self.view.frame.size.width, 100);
-//    actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-//    [actionsheet showInView:[UIApplication sharedApplication].keyWindow];
-
-}
 
 
 //call to get address book, latency
