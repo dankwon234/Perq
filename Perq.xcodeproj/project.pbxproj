@@ -778,8 +778,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: The Grid Media, LLC (24AEH6V6P8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: The Grid Media, LLC (24AEH6V6P8)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -813,7 +813,7 @@
 		5CE31E75198C6B7700384BF8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Denny Kwon (AE6SS2CGEL)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: The Grid Media, LLC (24AEH6V6P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Perq/Perq-Prefix.pch";
 				INFOPLIST_FILE = "Perq/Perq-Info.plist";
