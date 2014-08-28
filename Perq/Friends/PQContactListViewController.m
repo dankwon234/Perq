@@ -148,12 +148,12 @@
                     
                     
                     // image:
-                    bool hasImage = ABPersonHasImageData(contact);
-                    UIImage *image = nil;
-                    if (hasImage==true){
-                        NSData *imageData = (__bridge NSData *)ABPersonCopyImageDataWithFormat(contact, kABPersonImageFormatThumbnail);
-                        image = [UIImage imageWithData:imageData];
-                    }
+//                    bool hasImage = ABPersonHasImageData(contact);
+//                    UIImage *image = nil;
+//                    if (hasImage==true){
+//                        NSData *imageData = (__bridge NSData *)ABPersonCopyImageDataWithFormat(contact, kABPersonImageFormatThumbnail);
+//                        image = [UIImage imageWithData:imageData];
+//                    }
                     
                     
                     BOOL enoughInfo = NO;
