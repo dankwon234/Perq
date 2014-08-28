@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *zip;
 @property (copy, nonatomic) NSString *image;
 @property (copy, nonatomic) NSString *deviceHash;
+@property (copy, nonatomic) NSString *from;
 @property (copy, nonatomic) NSString *formattedDate;
 @property (strong, nonatomic) PQDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDate *timestamp;

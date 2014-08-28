@@ -30,6 +30,7 @@
 @synthesize commentCount;
 @synthesize formattedDate;
 @synthesize dateFormatter;
+@synthesize from;
 
 #define kOneDay 24*60*60 // one day in seconds
 
@@ -49,6 +50,7 @@
         self.city = @"none";
         self.state = @"none";
         self.zip = @"none";
+        self.from = @"none";
         self.latitude = 0.0f;
         self.longitude = 0.0f;
         self.imageData = nil;
@@ -73,7 +75,10 @@
         
         if ([key isEqualToString:@"deviceHash"])
             self.deviceHash = [info objectForKey:key];
-        
+
+        if ([key isEqualToString:@"from"])
+            self.from = [info objectForKey:key];
+
         if ([key isEqualToString:@"image"])
             self.image = [info objectForKey:key];
 
@@ -183,7 +188,7 @@
 
 - (NSDictionary *)parametersDictionary
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"deviceHash":self.deviceHash, @"caption":self.caption, @"image":self.image, @"city":self.city, @"state":self.state, @"zip":self.zip, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude]}];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"from":self.from, @"deviceHash":self.deviceHash, @"caption":self.caption, @"image":self.image, @"city":self.city, @"state":self.state, @"zip":self.zip, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude]}];
     
     return params;
 

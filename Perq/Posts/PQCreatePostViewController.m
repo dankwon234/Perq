@@ -33,6 +33,7 @@ static NSString *placeholder = @"Enter a short caption here.";
         self.post.zip = self.session.zip;
         self.post.latitude = self.session.latitude;
         self.post.longitude = self.session.longitude;
+        self.post.from = self.session.device.phoneNumber;
     }
     
     return self;
