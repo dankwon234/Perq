@@ -604,12 +604,13 @@ static NSString *cellIdentifier = @"cellIdentifier";
     PQPost *post = (PQPost *)self.posts[indexPath.row];
     cell.tag = indexPath.row+1000;
     
+    cell.border.backgroundColor = ([self.session.device.contactList containsObject:post.from]) ? [UIColor orangeColor] : [UIColor whiteColor];
+    
     [cell.btnComment setTitle:[NSString stringWithFormat:@"%d", post.commentCount] forState:UIControlStateNormal];
     [cell.btnHeart setTitle:[NSString stringWithFormat:@"%d", post.likes.count] forState:UIControlStateNormal];
     
     if (post.imageData){
         cell.image.image = post.imageData;
-//        [cell animateIcon];
     }
     else{
         cell.image.image = [UIImage imageNamed:@"placeholder.png"];
