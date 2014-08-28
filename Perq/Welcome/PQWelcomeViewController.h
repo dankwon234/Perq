@@ -10,5 +10,4 @@
 
 @interface PQWelcomeViewController : PQViewController <UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 
-- (void)resetCollectionView;
 @end
