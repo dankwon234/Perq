@@ -11,6 +11,9 @@
 #import "PQCollectionViewFlowLayout.h"
 #import "PQCommentViewCell.h"
 #import "PQComment.h"
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+
 
 @interface PQPostViewController ()
 @property (strong, nonatomic) UIImageView *postImage;
@@ -19,7 +22,6 @@
 @property (strong, nonatomic) UICollectionView *commentsCollectionView;
 @property (strong, nonatomic) UIView *infoBox;
 @property (strong, nonatomic) UILabel *lblCaption;
-@property (strong, nonatomic) UILabel *lblLocation;
 @property (strong, nonatomic) UIView *fullImageView;
 @property (strong, nonatomic) UIImageView *fullImage;
 @property (strong, nonatomic) UIView *commentsFieldView;
@@ -27,7 +29,9 @@
 @property (strong, nonatomic) UIButton *btnLike;
 @property (strong, nonatomic) UIButton *btnShare;
 @property (strong, nonatomic) UILabel *lblDate;
+@property (strong, nonatomic) NSMutableArray *randomContacts;
 @property (nonatomic) BOOL textFieldCanDismiss;
+@property (nonatomic) BOOL guessing;
 @end
 
 static NSString *cellIdentifier = @"commentCellIdentifier";
@@ -44,6 +48,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.textFieldCanDismiss = NO;
+        self.guessing = NO;
 
     }
     return self;
@@ -106,17 +111,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     y = 0;
     CGFloat width = frame.size.width-x;
     
-    self.lblLocation = [[UILabel alloc] initWithFrame:CGRectMake(x, y, width, 22.0f)];
-    self.lblLocation.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    self.lblLocation.backgroundColor = [UIColor clearColor];
-    self.lblLocation.textColor = [UIColor lightGrayColor];
-    self.lblLocation.text = [NSString stringWithFormat:@"%@, %@", self.post.city, [self.post.state uppercaseString]];
-    self.lblLocation.alpha = 0.0f;
-    self.lblLocation.font = [UIFont systemFontOfSize:14.0f];
-    [view addSubview:self.lblLocation];
-    y += self.lblLocation.frame.size.height;
-
-    
     UIFont *verdana = [UIFont fontWithName:@"Verdana" size:16.0f];
     CGRect boudingRect = [self.post.caption boundingRectWithSize:CGSizeMake(width, 250.0f)
                                                          options:NSStringDrawingUsesLineFragmentOrigin
@@ -136,37 +130,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     [view addSubview:self.lblCaption];
     y += self.lblCaption.frame.size.height+20.0f;
     
-    UIImage *imgHeart = nil;
-    UIColor *btnColor = nil;
-    if ([self.post.likes containsObject:self.session.deviceHash]){
-        imgHeart = [UIImage imageNamed:@"iconHeartRed.png"];
-        btnColor = [UIColor whiteColor];
-    }
-    else{
-        imgHeart = [UIImage imageNamed:@"iconHeart.png"];
-        btnColor = [UIColor darkGrayColor];
-    }
-    
-    self.btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.btnLike.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    self.btnLike.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
-    [self.btnLike setBackgroundImage:imgHeart forState:UIControlStateNormal];
-    [self.btnLike setTitleColor:btnColor forState:UIControlStateNormal];
-    [self.btnLike setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
-    self.btnLike.titleLabel.font = [UIFont systemFontOfSize:12.0f];
-    [self.btnLike addTarget:self action:@selector(likePost:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:self.btnLike];
-    x += self.btnLike.frame.size.width;
-    
-    UIImage *imgShare = [UIImage imageNamed:@"iconShare.png"];
-    self.btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.btnShare.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self.btnShare setBackgroundImage:imgShare forState:UIControlStateNormal];
-    self.btnShare.frame = CGRectMake(x, y, imgShare.size.width, imgShare.size.height);
-    [view addSubview:self.btnShare];
-    x += self.btnShare.frame.size.width;
-    
     self.lblDate = [[UILabel alloc] initWithFrame:CGRectMake(x, y+8.5f, frame.size.width-x-10.0f, 22.0f)];
     self.lblDate.textColor = [UIColor darkGrayColor];
     self.lblDate.textAlignment = NSTextAlignmentCenter;
@@ -174,11 +137,11 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self.lblDate.backgroundColor = [UIColor whiteColor];
     self.lblDate.layer.cornerRadius = 4.0f;
     self.lblDate.text = self.post.formattedDate;
-    self.lblDate.font = [UIFont systemFontOfSize:12.0f];
+    self.lblDate.font = [UIFont systemFontOfSize:10.0f];
     if (self.post.formattedDate==nil)
         [self.post formatTimestamp];
     
-    self.lblDate.text = self.post.formattedDate;
+    self.lblDate.text = [NSString stringWithFormat:@"%@ | %@, %@", self.post.formattedDate, self.post.city, [self.post.state uppercaseString]];
     [view addSubview:self.lblDate];
 
     
@@ -232,13 +195,63 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     [self.fullImageView addSubview:self.fullImage];
     
     width = 0.5f*view.frame.size.width;
+    x = 32.0f;
+    y = view.frame.size.height-56.0f;
+    
+
+    BOOL fromFriend = (self.session.device.contactList.count>1 && [self.session.device.contactList containsObject:self.post.from]==YES && [self.post.from isEqualToString:self.session.device.phoneNumber]==NO);
+    
+    CGFloat space = (fromFriend) ? 32.0f : 68.0f;
+    
     UIButton *btnExitFullImage = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnExitFullImage.frame = CGRectMake(0.5*(view.frame.size.width-width), view.frame.size.height-50.0f, width, 36.0f);
+    btnExitFullImage.frame = CGRectMake(x, y, 36.0f, 36.0f);
     btnExitFullImage.titleLabel.font = verdana;
-    [btnExitFullImage setTitle:@"Close" forState:UIControlStateNormal];
+    [btnExitFullImage setTitle:@"X" forState:UIControlStateNormal];
     [btnExitFullImage setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btnExitFullImage addTarget:self action:@selector(exitFullImage:) forControlEvents:UIControlEventTouchUpInside];
     [self.fullImageView addSubview:btnExitFullImage];
+    x += btnExitFullImage.frame.size.width+space;
+    
+    UIImage *imgHeart = nil;
+    UIColor *btnColor = nil;
+    if ([self.post.likes containsObject:self.session.deviceHash]){
+        imgHeart = [UIImage imageNamed:@"iconHeartRed.png"];
+        btnColor = [UIColor whiteColor];
+    }
+    else{
+        imgHeart = [UIImage imageNamed:@"iconHeart.png"];
+        btnColor = [UIColor darkGrayColor];
+    }
+    
+    self.btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btnLike.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
+    [self.btnLike setBackgroundImage:imgHeart forState:UIControlStateNormal];
+    [self.btnLike setTitleColor:btnColor forState:UIControlStateNormal];
+    [self.btnLike setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
+    self.btnLike.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+    [self.btnLike addTarget:self action:@selector(likePost:) forControlEvents:UIControlEventTouchUpInside];
+    [self.fullImageView addSubview:self.btnLike];
+    x += self.btnLike.frame.size.width+space;
+
+    UIImage *imgShare = [UIImage imageNamed:@"iconShare.png"];
+    self.btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.btnShare setBackgroundImage:imgShare forState:UIControlStateNormal];
+    self.btnShare.frame = CGRectMake(x, y, imgShare.size.width, imgShare.size.height);
+    [self.fullImageView addSubview:self.btnShare];
+    x += self.btnShare.frame.size.width+space;
+    
+    if (fromFriend){
+        UIButton *btnGuess = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnGuess.frame = CGRectMake(x, y, 36.0f, 36.0f);
+        btnGuess.titleLabel.font = verdana;
+        [btnGuess setTitle:@"?" forState:UIControlStateNormal];
+        [btnGuess setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btnGuess addTarget:self action:@selector(guess:) forControlEvents:UIControlEventTouchUpInside];
+        [self.fullImageView addSubview:btnGuess];
+    }
+    
+
 
     
     [view addSubview:self.fullImageView];
@@ -309,7 +322,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
             self.border.transform = transform;
             
             self.lblCaption.alpha = 1.0f;
-            self.lblLocation.alpha = 1.0f;
             self.btnLike.alpha = 1.0f;
             self.btnShare.alpha = 1.0f;
             self.lblDate.alpha = 1.0f;
@@ -321,7 +333,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         
         if (verticalOffset > 100.0f){
             self.lblCaption.alpha = 0.0f;
-            self.lblLocation.alpha = 0.0f;
             self.btnLike.alpha = 0.0f;
             self.btnShare.alpha = 0.0f;
             self.lblDate.alpha = 0.0f;
@@ -330,7 +341,6 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         
         double d = 1-(verticalOffset/100.0f);
         self.lblCaption.alpha = d;
-        self.lblLocation.alpha = d;
         self.btnLike.alpha = d;
         self.btnShare.alpha = d;
         self.lblDate.alpha = d;
@@ -525,10 +535,162 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 
 }
 
+- (void)guess:(UIButton *)btn
+{
+    NSLog(@"GUESS:");
+    [self findRandomContacts];
+    
+    
+//    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Guess" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", nil];
+//    actionsheet.frame = CGRectMake(0, 150, self.view.frame.size.width, 100);
+//    actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+//    [actionsheet showInView:[UIApplication sharedApplication].keyWindow];
+
+}
+
+
+//call to get address book, latency
+- (void)findRandomContacts
+{
+    CFErrorRef error = NULL;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+    if (error) {
+        NSLog(@"Address book error");
+        [self showAlertWithtTitle:@"Error" message:@""];
+        return;
+    }
+    
+    
+    ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error){
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!granted) {
+                NSLog(@"Address book access denied");
+                [self.loadingIndicator stopLoading];
+                [self showAlertWithtTitle:@"Addres Book Unauthorized" message:@"Please go to the settings app and allow Perc to access your address book."];
+                return;
+            }
+            
+            NSLog(@"Address book access granted");
+            self.randomContacts = [NSMutableArray array];
+            
+            NSDictionary *correctAnswer = nil;
+            NSMutableArray *contactList = [NSMutableArray array];
+            NSArray *allContacts = (__bridge_transfer NSArray*)ABAddressBookCopyArrayOfAllPeople(addressBook);
+            for (int i=0; i<allContacts.count; i++) {
+                ABRecordRef contact = (__bridge ABRecordRef)allContacts[i];
+                
+                NSString *firstName = (__bridge NSString *)ABRecordCopyValue(contact, kABPersonFirstNameProperty);
+                NSString *lastName = (__bridge NSString *)ABRecordCopyValue(contact, kABPersonLastNameProperty);
+                
+                // phone:
+                ABMultiValueRef phones = ABRecordCopyValue(contact, kABPersonPhoneProperty);
+                NSString *phoneNumber = (__bridge NSString *)ABMultiValueCopyValueAtIndex(phones, 0);
+                
+                
+                BOOL enoughInfo = NO;
+                if (firstName != nil && phoneNumber != nil)
+                    enoughInfo = YES;
+                
+                if (enoughInfo){
+                    NSMutableDictionary *contactInfo = [NSMutableDictionary dictionary];
+                    contactInfo[@"firstName"] = firstName;
+                    
+                    if (lastName != nil)
+                        contactInfo[@"lastName"] = lastName;
+                    
+                    NSString *formattedNumber = @"";
+                    static NSString *numbers = @"0123456789";
+                    for (int i=0; i<phoneNumber.length; i++) {
+                        NSString *character = [phoneNumber substringWithRange:NSMakeRange(i, 1)];
+                        if ([numbers rangeOfString:character].location != NSNotFound){
+                            formattedNumber = [formattedNumber stringByAppendingString:character];
+                            
+                            NSString *firstNum = [formattedNumber substringWithRange:NSMakeRange(0, 1)];
+                            if ([firstNum isEqualToString:@"1"])
+                                formattedNumber = [formattedNumber substringFromIndex:1];
+                        }
+                    }
+                    
+                    contactInfo[@"formattedNumber"] = formattedNumber;
+                    
+                    if ([formattedNumber isEqualToString:self.post.from]==YES)
+                        correctAnswer = contactInfo;
+                    else
+                        [contactList addObject:contactInfo];
+                    
+                }
+            }
+            
+            CFRelease(addressBook);
+            
+            if (correctAnswer==nil){ // didn't find the source - should never happen
+                
+            }
+            
+            [self.randomContacts addObject:correctAnswer];
+            while (self.randomContacts.count<4) {
+                int random = 0+arc4random()%contactList.count;
+                NSDictionary *contactInfo = contactList[abs(random)];
+                if ([self.randomContacts containsObject:contactInfo]==NO)
+                    [self.randomContacts addObject:contactInfo];
+            }
+            
+            
+            
+            
+            NSMutableArray *guesses = [NSMutableArray array];
+            for (int i=0; i<4; i++) {
+                NSDictionary *contact = self.randomContacts[i];
+                if (contact[@"lastName"]) // last name might not be there
+                    [guesses addObject:[NSString stringWithFormat:@"%@ %@", contact[@"firstName"], contact[@"lastName"]]];
+                else
+                    [guesses addObject:[NSString stringWithFormat:@"%@", contact[@"firstName"]]];
+            }
+            
+            [self.loadingIndicator stopLoading];
+            self.guessing = YES;
+            UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Guess"
+                                                                     delegate:self
+                                                            cancelButtonTitle:nil
+                                                       destructiveButtonTitle:nil
+                                                            otherButtonTitles:guesses[0], guesses[1], guesses[2], guesses[3], nil];
+            
+            
+            actionsheet.frame = CGRectMake(0, 150, self.view.frame.size.width, 100);
+            actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+            [actionsheet showInView:[UIApplication sharedApplication].keyWindow];
+
+            
+            
+        });
+    });
+}
+
+
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"actionSheet clickedButtonAtIndex: %d", buttonIndex);
+    if (self.guessing){
+        NSDictionary *contactInfo = self.randomContacts[buttonIndex];
+        NSLog(@"%@", [contactInfo description]);
+        
+        if ([contactInfo[@"formattedNumber"] isEqualToString:self.post.from]==YES){
+            [self showAlertWithtTitle:@"Correct!" message:@"Nicely Done."];
+        }
+        else{
+            [self showAlertWithtTitle:@"Wrong!" message:[NSString stringWithFormat:@"%@ wouldn't post that!", contactInfo[@"firstName"]]];
+        }
+
+
+        self.guessing = NO;
+        return;
+    }
+    
+    
+    
+    
     if (buttonIndex==0){ // Twitter
         [self.socialAccountsMgr requestTwitterAccess:^(id result, NSError *error){
             if (error){
