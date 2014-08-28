@@ -667,8 +667,10 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         NSDictionary *contactInfo = self.randomContacts[buttonIndex];
         NSLog(@"%@", [contactInfo description]);
         
+        BOOL correct = NO;
         if ([contactInfo[@"formattedNumber"] isEqualToString:self.post.from]==YES){
             [self showAlertWithtTitle:@"Correct!" message:@"Nicely Done."];
+            correct = YES;
         }
         else{
             [self showAlertWithtTitle:@"Wrong!" message:[NSString stringWithFormat:@"%@ wouldn't post that!", contactInfo[@"firstName"]]];
@@ -678,10 +680,21 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
         if ([self.post.guessed containsObject:self.session.deviceHash]==NO)
             [self.post.guessed addObject:self.session.deviceHash];
         
-        
-        [[PQWebServices sharedInstance] guessPost:self.post
+        PQWebServices *webService = [PQWebServices sharedInstance];
+        [webService guessPost:self.post
                                        withDevice:self.session.deviceHash
                                        completion:^(id result, NSError *error){
+                                           if (error){
+                                               
+                                           }
+                                           else{
+                                               if (correct){ // only if user got it right
+                                                   [webService updateDevice:self.session.device
+                                                                 completion:^(id result, NSError *error){
+                                                       
+                                                   }];
+                                               }
+                                           }
                                            
                                        }];
         
