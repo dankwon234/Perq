@@ -8,6 +8,6 @@
 
 #import "PQViewController.h"
 
-@interface PQContactListViewController : PQViewController
+@interface PQContactListViewController : PQViewController <UITextFieldDelegate>
 
 @end

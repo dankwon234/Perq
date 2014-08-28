@@ -14,6 +14,10 @@
 
 @interface PQContactListViewController ()
 @property (strong, nonatomic) UITextField *phoneNumberField;
+@property (strong, nonatomic) NSCharacterSet *invalidCharacters;
+
+
+
 @end
 
 @implementation PQContactListViewController
@@ -23,6 +27,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self addNavigationTitleView];
+        self.invalidCharacters = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+
         
     }
     return self;
@@ -31,16 +37,49 @@
 - (void)loadView
 {
     UIView *view = [self baseView:YES];
-    view.backgroundColor = [UIColor greenColor];
+    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgBlurry.png"]];
     CGRect frame = view.frame;
 
+    CGFloat y = 20.0f;
     
-    self.phoneNumberField = [[UITextField alloc] initWithFrame:CGRectMake(12.0f, 20.0f, frame.size.width-24.0f, 36.0f)];
-    self.phoneNumberField.backgroundColor = [UIColor redColor];
+    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(12.0f, y, frame.size.width-24.0f, 36.0f)];
+    background.backgroundColor = [UIColor whiteColor];
+    background.alpha = 0.25f;
+    background.layer.cornerRadius = 3.0f;
+    background.layer.masksToBounds = YES;
+    [view addSubview:background];
+
+    self.phoneNumberField = [[UITextField alloc] initWithFrame:CGRectMake(12.0f, y, frame.size.width-24.0f, 36.0f)];
+    self.phoneNumberField.backgroundColor = [UIColor clearColor];
+    self.phoneNumberField.textColor = [UIColor whiteColor];
+    self.phoneNumberField.delegate = self;
+    self.phoneNumberField.textAlignment = NSTextAlignmentCenter;
+    self.phoneNumberField.returnKeyType = UIReturnKeyDone;
+    self.phoneNumberField.keyboardType = UIKeyboardTypePhonePad;
     [view addSubview:self.phoneNumberField];
+    y += self.phoneNumberField.frame.size.height+12.0f;
     
-    [view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)]];
+    UIButton *btnConnect = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnConnect.frame = CGRectMake(12.0f, y, frame.size.width-24.0f, 44.0f);
+    [btnConnect setTitle:@"Connect" forState:UIControlStateNormal];
+    [btnConnect setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnConnect setBackgroundImage:[UIImage imageNamed:@"bgButton.png"] forState:UIControlStateNormal];
+    btnConnect.layer.cornerRadius = 4.0f;
+    btnConnect.layer.masksToBounds = YES;
+    btnConnect.titleLabel.font = [UIFont fontWithName:@"Verdana" size:16.0f];
+    [btnConnect addTarget:self action:@selector(scanContacts) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:btnConnect];
+    y += btnConnect.frame.size.height+12.0f;
     
+    UILabel *lblExplanation = [[UILabel alloc] initWithFrame:CGRectMake(12.0f, y, frame.size.width-24.0f, 72.0f)];
+    lblExplanation.textAlignment = NSTextAlignmentCenter;
+    lblExplanation.textColor = [UIColor whiteColor];
+    lblExplanation.numberOfLines = 0;
+    lblExplanation.text = @"Perc connects you to your friends from your Contact list. We will never share your number with anyone. Promise.";
+    lblExplanation.font = [UIFont systemFontOfSize:14.0f];
+    [view addSubview:lblExplanation];
+    
+
     
     
     
@@ -52,7 +91,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self requestAddresBookAccess];
+    [self.phoneNumberField becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,18 +115,20 @@
 //search for beginning of first or last name, have search work for only prefixes
 - (void)requestAddresBookAccess//call to get address book, latency
 {
-    [self.loadingIndicator startLoading];
     
     CFErrorRef error = NULL;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+    if (error) {
+        NSLog(@"Address book error");
+        [self showAlertWithtTitle:@"Error" message:@""];
+        return;
+    }
+    
+    
     ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error){
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (error) {
-                NSLog(@"Address book error");
-                //                [self.delegate addressBookHelperError:self];
-            }
-            else if (granted) {
+            if (granted) {
                 NSLog(@"Address book access granted");
                 self.session.device.contactList = [NSMutableArray array]; // clear out the old list.
                 NSArray *allContacts = (__bridge_transfer NSArray*)ABAddressBookCopyArrayOfAllPeople(addressBook);
@@ -170,6 +211,7 @@
                         if ([confirmation isEqualToString:@"success"]){
                             NSDictionary *device = results[@"device"];
                             [self.session.device populate:device];
+                            [self.navigationController popViewControllerAnimated:YES];
                         }
                         else{
                             [self showAlertWithtTitle:@"Error" message:results[@"error"]];
@@ -190,6 +232,30 @@
         });
     });
 }
+
+- (void)scanContacts
+{
+    NSString *phoneNum = self.phoneNumberField.text;
+    
+    phoneNum = [phoneNum stringByTrimmingCharactersInSet:self.invalidCharacters];
+    phoneNum = [phoneNum stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    phoneNum = [phoneNum stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    phoneNum = [phoneNum stringByReplacingOccurrencesOfString:@")" withString:@""];
+    phoneNum = [phoneNum stringByReplacingOccurrencesOfString:@" " withString:@""];
+    phoneNum = [phoneNum stringByReplacingOccurrencesOfString:@"." withString:@""];
+    NSLog(@"PHONE NUMBER = %@", phoneNum);
+    
+    
+    if (phoneNum.length == 10){
+        [self.loadingIndicator startLoading];
+        self.session.device.phoneNumber = phoneNum;
+        [self performSelector:@selector(requestAddresBookAccess) withObject:nil afterDelay:0.1f];
+        return;
+    }
+    
+    [self showAlertWithtTitle:@"Error" message:@"Please enter a valid phone number, like this: 2125559876"];
+}
+
 
 
 - (void)didReceiveMemoryWarning
