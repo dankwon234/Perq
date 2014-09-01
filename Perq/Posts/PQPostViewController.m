@@ -227,7 +227,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
     self.btnLike.frame = CGRectMake(x, y, imgHeart.size.width, imgHeart.size.height);
     [self.btnLike setBackgroundImage:imgHeart forState:UIControlStateNormal];
     [self.btnLike setTitleColor:btnColor forState:UIControlStateNormal];
-    [self.btnLike setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
+    [self.btnLike setTitle:[NSString stringWithFormat:@"%d", (int)self.post.likes.count] forState:UIControlStateNormal];
     self.btnLike.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     [self.btnLike addTarget:self action:@selector(likePost:) forControlEvents:UIControlEventTouchUpInside];
     [self.fullImageView addSubview:self.btnLike];
@@ -508,7 +508,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
                         btn.alpha = 1.0f;
                         [btn setBackgroundImage:btnImage forState:UIControlStateNormal];
                         [btn setTitleColor:btnColor forState:UIControlStateNormal];
-                        [btn setTitle:[NSString stringWithFormat:@"%d", self.post.likes.count] forState:UIControlStateNormal];
+                        [btn setTitle:[NSString stringWithFormat:@"%d", (int)self.post.likes.count] forState:UIControlStateNormal];
                     }
                     completion:^(BOOL finished){ // send api call
                         if ([self.post.likes containsObject:self.session.deviceHash]){ // remove like
@@ -621,13 +621,16 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
                 
             }
             
-            [self.randomContacts addObject:correctAnswer];
-            while (self.randomContacts.count<4) {
+            while (self.randomContacts.count<3) {
                 int random = 0+arc4random()%contactList.count;
                 NSDictionary *contactInfo = contactList[abs(random)];
                 if ([self.randomContacts containsObject:contactInfo]==NO)
                     [self.randomContacts addObject:contactInfo];
             }
+            
+            int randomIndex = 0+arc4random()%self.randomContacts.count;
+            [self.randomContacts insertObject:correctAnswer atIndex:randomIndex];
+            
             
             
             
