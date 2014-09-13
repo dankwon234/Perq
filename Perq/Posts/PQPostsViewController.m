@@ -287,7 +287,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 - (void)menuOptionSelected:(UIButton *)btn
 {
     int oldIndex = self.selectedMenuIndex;
-    int tag = btn.tag-1000;
+    int tag = (int)btn.tag-1000;
     if (tag==self.selectedMenuIndex)
         return;
     
