@@ -45,6 +45,8 @@
 
 - (void)populate:(NSDictionary *)info
 {
+    self.text = [info objectForKey:@"text"]; // this is a bug. for some reason the 'text' key doesn't pick up
+
     for (NSString *key in info.allKeys) {
         if ([key isEqualToString:@"id"])
             self.uniqueId = [info objectForKey:key];
@@ -52,8 +54,9 @@
         if ([key isEqualToString:@"post"])
             self.post = [info objectForKey:key];
 
-        if ([key isEqualToString:@"text"])
+        if ([key isEqualToString:@"text"]){
             self.text = [info objectForKey:key];
+        }
 
         if ([key isEqualToString:@"handle"])
             self.handle = [info objectForKey:key];
