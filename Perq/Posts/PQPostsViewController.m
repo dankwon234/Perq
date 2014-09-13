@@ -443,8 +443,9 @@ static NSString *cellIdentifier = @"cellIdentifier";
     }
     
     
-    NSLog(@"%@", [results description]);
+//    NSLog(@"%@", [results description]);
     NSArray *p = results[@"posts"];
+    NSLog(@"POSTS: %@", [p description]);
     [self.postsCollectionView.collectionViewLayout invalidateLayout];
     [self.posts removeAllObjects];
     for (int i=0; i<p.count; i++)
