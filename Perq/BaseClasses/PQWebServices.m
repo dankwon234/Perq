@@ -151,7 +151,7 @@
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     if (data){
         UIImage *image = [UIImage imageWithData:data];
-        NSLog(@"CACHED IMAGE: %@, %d bytes", imageId, data.length);
+        NSLog(@"CACHED IMAGE: %@, %d bytes", imageId, (int)data.length);
         if (!image)
             NSLog(@"CACHED IMAGE IS NIL:");
 

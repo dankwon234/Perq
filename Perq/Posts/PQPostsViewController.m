@@ -607,8 +607,8 @@ static NSString *cellIdentifier = @"cellIdentifier";
     
     cell.border.backgroundColor = ([self.session.device.contactList containsObject:post.from]) ? [UIColor orangeColor] : [UIColor whiteColor];
     
-    [cell.btnComment setTitle:[NSString stringWithFormat:@"%d", post.commentCount] forState:UIControlStateNormal];
-    [cell.btnHeart setTitle:[NSString stringWithFormat:@"%d", post.likes.count] forState:UIControlStateNormal];
+    [cell.btnComment setTitle:[NSString stringWithFormat:@"%d", (int)post.commentCount] forState:UIControlStateNormal];
+    [cell.btnHeart setTitle:[NSString stringWithFormat:@"%d", (int)post.likes.count] forState:UIControlStateNormal];
     
     if (post.imageData){
         cell.image.image = post.imageData;
@@ -707,7 +707,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"actionSheet clickedButtonAtIndex: %d", buttonIndex);
+    NSLog(@"actionSheet clickedButtonAtIndex: %d", (int)buttonIndex);
     if (buttonIndex==0){
         [self launchImageSelector:UIImagePickerControllerSourceTypePhotoLibrary];
     }

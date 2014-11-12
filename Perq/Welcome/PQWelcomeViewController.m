@@ -178,7 +178,7 @@ static NSString *cellIdentifier = @"welcomeCellIdentifier";
     PQWelcomeViewCell *cell = (PQWelcomeViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     
-    int row = indexPath.row;
+    int row = (int)indexPath.row;
     
     if (row==0){
         cell.btnSignup.alpha = 0.0f;
