@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CFBBC521A13C7AC0036277A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CFBBC511A13C7AC0036277A /* MobileCoreServices.framework */; };
 		5C04B26C1996DE57005CEC81 /* PQSocialAccountsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04B26B1996DE57005CEC81 /* PQSocialAccountsManager.m */; };
 		5C04B26E1996DE9A005CEC81 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C04B26D1996DE9A005CEC81 /* Accounts.framework */; };
 		5C04B2701996DEA0005CEC81 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C04B26F1996DEA0005CEC81 /* Social.framework */; };
@@ -92,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CFBBC511A13C7AC0036277A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5C04B26A1996DE57005CEC81 /* PQSocialAccountsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQSocialAccountsManager.h; sourceTree = "<group>"; };
 		5C04B26B1996DE57005CEC81 /* PQSocialAccountsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQSocialAccountsManager.m; sourceTree = "<group>"; };
 		5C04B26D1996DE9A005CEC81 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -210,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CFBBC521A13C7AC0036277A /* MobileCoreServices.framework in Frameworks */,
 				5CF2ED0619A6B2CE00300103 /* AddressBookUI.framework in Frameworks */,
 				5CF2ED0419A6B2CA00300103 /* AddressBook.framework in Frameworks */,
 				5C04B2701996DEA0005CEC81 /* Social.framework in Frameworks */,
@@ -339,6 +342,7 @@
 		5CE31E49198C6B7600384BF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CFBBC511A13C7AC0036277A /* MobileCoreServices.framework */,
 				5CF2ED0519A6B2CE00300103 /* AddressBookUI.framework */,
 				5CF2ED0319A6B2CA00300103 /* AddressBook.framework */,
 				5C04B26F1996DEA0005CEC81 /* Social.framework */,
