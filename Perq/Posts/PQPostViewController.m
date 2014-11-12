@@ -665,7 +665,7 @@ static NSString *cellIdentifier = @"commentCellIdentifier";
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"actionSheet clickedButtonAtIndex: %d", buttonIndex);
+    NSLog(@"actionSheet clickedButtonAtIndex: %d", (int)buttonIndex);
     if (self.guessing){
         NSDictionary *contactInfo = self.randomContacts[buttonIndex];
         NSLog(@"%@", [contactInfo description]);
